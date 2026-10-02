@@ -58,7 +58,7 @@ details summary{cursor:pointer;font-weight:750}.settings{margin-top:12px;display
 <label>新增自己的题材</label>
 <div class="inline"><input id="customGenre" placeholder="例如：民国戏班 / 港风豪门"><button class="mini" id="saveGenre">保存</button></div>
 </div>
-<div class="field" id="countField"><label>多人模式人数</label><select id="multiCount"><option value="2">2个</option><option value="3" selected>3个</option><option value="4">4个</option></select></div>
+<div class="field" id="countField"><label>多人模式人数</label><select id="multiCount"><option value="2">2个</option><option value="3" selected>3个</option><option value="4">4个</option><option value="5">5个</option><option value="6">6个</option><option value="7">7个</option><option value="8">8个</option></select></div>
 </div>
 
 <div class="field">
@@ -282,11 +282,11 @@ function buildOutline(story){
  const world=story.world?story.world+" ":"";
  return [
   ["故事起点",world+a.name+"和"+b.name+"因为"+hook+"有了第一次真正的交集。两人的身份和做事方式天然有摩擦，所以很快记住了对方。"],
-  ["继续见面",第一次见面留下了一件没处理完的事，他们因此有了第二次、第三次碰面的理由。关系不是靠“命中注定”，而是被一件件具体的小事往前推。"],
-  ["第一次变化",其中一人开始记住对方的习惯：时间、口味、工作安排，或者一句几天前随口说过的话。这个变化先落在行动上，谁都没急着给它命名。"],
-  ["中段矛盾",职业、立场或旧经历让两个人第一次真正吵起来。争执里翻出一个前面已经埋过的小细节，关系因此被迫往更深处走。"],
-  ["关系断裂",其中一人做出一个很难收回的决定：离开、拒绝合作、结束关系，或在最需要对方时没有出现。"],
-  ["后续",真正分开以后，人物各自继续生活。是否重逢、告白或复合，要从前面的选择里长出来，而不是突然发生。"]
+  ["继续见面","第一次见面留下了一件没处理完的事，他们因此有了第二次、第三次碰面的理由。关系不是靠“命中注定”，而是被一件件具体的小事往前推。"],
+  ["第一次变化","其中一人开始记住对方的习惯：时间、口味、工作安排，或者一句几天前随口说过的话。这个变化先落在行动上，谁都没急着给它命名。"],
+  ["中段矛盾","职业、立场或旧经历让两个人第一次真正吵起来。争执里翻出一个前面已经埋过的小细节，关系因此被迫往更深处走。"],
+  ["关系断裂","其中一人做出一个很难收回的决定：离开、拒绝合作、结束关系，或在最需要对方时没有出现。"],
+  ["后续","真正分开以后，人物各自继续生活。是否重逢、告白或复合，要从前面的选择里长出来，而不是突然发生。"]
  ]
 }
 function dynamicScenes(story){
@@ -299,7 +299,7 @@ function buildChapter(story,variant){
  if(f.patron&&f.work){
    return pov.name+"收工已经快十二点。化妆间的人走得差不多，他卸完妆才看见手机上那条四十分钟前的消息。\n\n"+
    other.name+"：结束以后过来。\n\n"+
-   没有称呼，也没问他今天几点收工。\n\n"+
+   "没有称呼，也没问他今天几点收工。\n\n"+
    pov.name+"盯着屏幕看了两秒，把手机扣回桌上。经纪人正好推门进来，手里还拿着明天的通告单。\n\n"+
    "“你今晚还回酒店吗？”\n\n"+
    "“不回。”\n\n"+
