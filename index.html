@@ -57,6 +57,13 @@ label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}select{w
 const S=["裴","沈","贺","周","梁","闻","程","谢","郁","季","陆","祁","温","许","江","顾","林","韩","陈","霍"];
 const N=["既明","庭川","行舟","知遥","景澄","惟深","照临","柏言","明彻","序白","砚川","越衡","怀序","迟野","临川","闻洲","予安","景行","言川","沉舟"];
 const I=["法学院学生","建筑系学生","青年律师","纪录片摄影师","游戏主策","剧团编导","赛车俱乐部经营者","记者","科研团队骨干","创业公司合伙人","家族企业继承人","独立音乐人","博物馆策展助理","电竞数据分析师","投行分析师","高校青年教师"];
+const GI={
+"大学校园":["法学院学生","建筑系学生","新闻系学生","医学院学生","计算机系学生","校辩论队主力","研究生助教","学生会干部"],
+"都市职场":["青年律师","纪录片摄影师","游戏主策","记者","创业公司合伙人","投行分析师","博物馆策展助理","品牌策划"],
+"高干 / 家族":["家族企业继承人","青年律师","投行分析师","政商家庭二代","私人基金经理","建筑事务所合伙人","艺术基金会负责人","创业公司创始人"],
+"悬疑危险":["记者","刑侦顾问","法医助理","私人调查员","纪录片摄影师","赛车俱乐部经营者","安保顾问","律师"],
+"轻幻想":["异能研究员","城市异常调查员","梦境记录师","特殊事务律师","古籍修复师","灵感摄影师","研究所观察员","秘密组织联络人"]
+};
 const T=[
 ["观察力很强","不爱解释","判断快"],["表面温和","控制欲强","情绪很稳"],["脾气不好","分寸极准","越生气越安静"],["社交能力强","私下疏离","讨厌被看透"],["反骨","行动力强","不接受别人替自己决定"],["冷淡","记仇","非常护短"],["随性外表","秩序感极强","很少真正信任人"],["嘴很毒","心思细","很少主动示弱"],["克制","锋利","自尊心很强"],["看起来好相处","边界感很重","一旦认定很固执"]
 ];
@@ -100,20 +107,40 @@ const tags=a=>a.map(x=>"<span>"+x+"</span>").join("");
 
 function gen(){
  const h=hist(),used=h.flatMap(x=>[x.a,x.b]); const a=makeName(used),b=makeName([...used,a]);
- const ia=pick(I); let ib=pick(I); while(ib===ia)ib=pick(I);
+ const g=document.getElementById("genre").value;
+ const heat=document.getElementById("heat").value;
+ const pool=(g==="随机题材"?I:(GI[g]||I));
+ const ia=pick(pool); let ib=pick(pool); while(ib===ia)ib=pick(pool);
  const ta=pick(T); let tb=pick(T); while(tb===ta)tb=pick(T);
- const dyn=pick(D),sp=pick(P),sc=pick(C),dia=pick(Q);
+ let dyn=pick(D),sp=pick(P),sc=pick(C),dia=pick(Q);
+ if(heat==="慢热暗流"){
+   dyn=pick(["他们在人前一直很正常，真正的关系只存在于彼此听得懂的半句话里。","他们谁都没打算靠近谁，但注意力已经先一步失控。","他们站在不同立场，却发现对方是少数真正理解自己判断方式的人。理解先于喜欢发生。"]);
+   dia="不要急着点破感情。多写闲话、停顿和看似无关的试探，让读者比角色早一点察觉。";
+ }
+ if(heat==="高张力"){
+   dyn=pick(["一方习惯控制节奏，另一方偏偏不配合。那套控制对所有人都有效，唯独在这个人身上经常失效。","他们长期意见不合，也因此比任何人都清楚对方会怎么想。越容易刺中彼此，也越知道哪些地方绝对不能碰。"]);
+   dia="让他们真正对话十几轮，允许反问、打断、逼近问题核心，但别靠装腔短句制造张力。";
+ }
+ if(heat==="危险拉扯"){
+   dyn=pick(["他们明知道继续靠近会让局面失控，却谁都没有先退出。","他们彼此都握着能让对方难堪的筹码，却越来越少真正使用它。","一方试图建立边界，另一方总能找到边界最薄的地方。"]);
+   sp=pick(["他明明最擅长及时止损，却一次次给这个人留下第二次机会。","他知道对方最危险的地方在哪里，却偏偏允许那部分靠近自己。","他从不把弱点交给别人，唯独这个人已经知道得太多。"]);
+   dia="危险感来自双方都清楚后果，却仍然继续谈、继续靠近。避免用粗暴台词替代真正的心理博弈。";
+ }
+ if(heat==="势均力敌"){
+   dyn=pick(["他们都无法轻易改变对方，于是每一次让步都显得格外明显。","两个人都很会判断局势，也都知道对方在算什么。真正的变化发生在有人第一次主动不算输赢。","他们彼此都不是谁的附属，每次靠近都意味着重新协商边界。"]);
+   dia="双方都要有自己的判断和反击能力。不要让其中一个只负责被影响；让每轮对话都发生微小的攻守变化。";
+ }
  pairtitle.textContent=a+" × "+b;
  aName.textContent=a;aTags.innerHTML=tags([ia,...ta]);aText.textContent="让性格通过选择、反应和说话方式露出来，别直接下定义。";
  bName.textContent=b;bTags.innerHTML=tags([ib,...tb]);bText.textContent="他必须有自己的目标和生活；就算删掉感情线，这个人也能单独成立。";
  dynamic.textContent=dyn;special.textContent="只属于他们的例外："+sp;scene.textContent=sc;dialogue.textContent=dia;
- const r={a,b,ia,ib,ta,tb,dyn,sp,sc,dia};h.unshift(r);save(h);window.cur=r;
- out.classList.add("show");status.textContent="这台设备已记住最近 "+Math.min(h.length,30)+" 组，会尽量避开刚用过的人名。";
+ const r={a,b,ia,ib,ta,tb,dyn,sp,sc,dia,g,heat};h.unshift(r);save(h);window.cur=r;
+ out.classList.add("show");status.textContent=(g==="随机题材"?"随机题材":g)+" · "+(heat==="随机浓度"?"随机关系":heat)+" ｜ 已记住最近 "+Math.min(h.length,30)+" 组。";
  setTimeout(()=>out.scrollIntoView({behavior:"smooth",block:"start"}),60);
 }
 async function copyPrompt(){
  if(!window.cur)return; const p=window.cur;
- const t="请基于下面这对原创人物写小说片段。\n\n人物A："+p.a+"，"+p.ia+"。性格关键词："+p.ta.join("、")+"。\n人物B："+p.b+"，"+p.ib+"。性格关键词："+p.tb.join("、")+"。\n关系核心："+p.dyn+"\n特殊性："+p.sp+"\n开场方向："+p.sc+"\n\n写作要求：\n- 文笔优先，拒绝小白、机械、模板化表达。\n- 对话充分展开，以多轮来回为主，可以有停顿、打断、岔题和潜台词。\n- 两个人说话方式必须不同。\n- 少用勾唇、挑眉、眸色一沉、呼吸一滞等库存动作。\n- 不要直接替读者总结人物心理。\n- 人物有自己的生活和判断。\n- 不急着把感情说透。\n- "+p.dia;
+ const t="请基于下面这对原创人物写小说片段。\n\n人物A："+p.a+"，"+p.ia+"。性格关键词："+p.ta.join("、")+"。\n人物B："+p.b+"，"+p.ib+"。性格关键词："+p.tb.join("、")+"。\n题材："+(p.g||"随机题材")+"\n关系浓度："+(p.heat||"随机浓度")+"\n关系核心："+p.dyn+"\n特殊性："+p.sp+"\n开场方向："+p.sc+"\n\n写作要求：\n- 文笔优先，拒绝小白、机械、模板化表达。\n- 对话充分展开，以多轮来回为主，可以有停顿、打断、岔题和潜台词。\n- 两个人说话方式必须不同。\n- 少用勾唇、挑眉、眸色一沉、呼吸一滞等库存动作。\n- 不要直接替读者总结人物心理。\n- 人物有自己的生活和判断。\n- 不急着把感情说透。\n- "+p.dia;
  try{await navigator.clipboard.writeText(t);alert("已复制，可以回 ChatGPT 粘贴。")}catch{prompt("长按复制：",t)}
 }
 document.getElementById("gen").addEventListener("click",gen);
