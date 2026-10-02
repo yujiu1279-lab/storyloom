@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>枚枚的 CP 捏捏机</title>
+<style>
+:root{--bg:#0f1117;--card:#171a22;--card2:#202431;--line:#2d3342;--text:#f6f7fb;--muted:#a9afbc;--p1:#9b8cff;--p2:#ff98c9}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#101219,#151824 55%,#0f1117);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;min-height:100vh}
+.wrap{max-width:760px;margin:auto;padding:22px 15px 50px}.hero{padding:22px 18px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(135deg,rgba(155,140,255,.18),rgba(255,152,201,.10))}
+h1{font-size:27px;margin:0 0 9px}.lead{font-size:14px;line-height:1.75;color:#d1d5df}
+.big{width:100%;margin-top:15px;padding:17px 16px;border:0;border-radius:17px;background:linear-gradient(135deg,var(--p1),var(--p2));color:#101118;font-size:18px;font-weight:800}
+.hint{text-align:center;color:var(--muted);font-size:12px;margin-top:9px}
+details,.out,.explain{margin-top:13px;background:rgba(23,26,34,.95);border:1px solid var(--line);border-radius:17px;padding:15px}
+summary{cursor:pointer;font-size:14px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:13px}@media(max-width:550px){.grid{grid-template-columns:1fr}}
+label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}select{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--card2);color:var(--text);font-size:15px}
+.out{display:none;border-radius:22px}.out.show{display:block}.topline{font-size:12px;color:var(--p2);letter-spacing:.1em}.pairtitle{font-size:22px;font-weight:800;margin:4px 0 12px}
+.card{margin-top:10px;padding:15px;border-radius:17px;border:1px solid var(--line);background:#12151c}.role{font-size:12px;color:var(--p1);font-weight:700}.name{font-size:22px;font-weight:850;margin:5px 0}
+.tags span{display:inline-block;font-size:12px;color:#daddea;background:#262b38;border-radius:999px;padding:5px 8px;margin:2px 3px 4px 0}
+.text{font-size:14px;line-height:1.8;color:#e7e9ef}.special{margin-top:10px;padding:12px 13px;border-left:3px solid var(--p2);border-radius:10px;background:#1c202a;font-size:14px;line-height:1.75}
+.secTitle{font-size:13px;color:#b7bdca;margin-bottom:7px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}@media(max-width:420px){.actions{grid-template-columns:1fr}}
+.btn{padding:13px;border-radius:13px;border:1px solid var(--line);background:var(--card2);color:var(--text);font-size:14px;font-weight:700}.small{font-size:12px;color:#8f97a7;line-height:1.6;margin-top:8px}
+.explain{font-size:13px;line-height:1.75;color:#c7ccd7}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="hero">
+<h1>CP 捏捏机 🫳🏻</h1>
+<div class="lead">不用填问卷。点一下，直接生成一对新人物、关系核心、“只对彼此例外”的细节和开场戏。</div>
+<button class="big" id="gen">✨ 随机捏一对 CP</button>
+<div class="hint">不香就继续换，直到出现“诶，这个有点意思”。</div>
+</section>
+<details>
+<summary>⚙️ 高级设置（可以完全不管）</summary>
+<div class="grid">
+<div><label>我今天想看</label><select id="genre"><option>随机题材</option><option>大学校园</option><option>都市职场</option><option>高干 / 家族</option><option>悬疑危险</option><option>轻幻想</option></select></div>
+<div><label>关系浓度</label><select id="heat"><option>随机浓度</option><option>慢热暗流</option><option>高张力</option><option>危险拉扯</option><option>势均力敌</option></select></div>
+</div>
+</details>
+
+<section id="out" class="out">
+<div class="topline">THIS TIME</div><div class="pairtitle" id="pairtitle"></div>
+<div class="card"><div class="role">人物 A</div><div class="name" id="aName"></div><div class="tags" id="aTags"></div><div class="text" id="aText"></div></div>
+<div class="card"><div class="role">人物 B</div><div class="name" id="bName"></div><div class="tags" id="bTags"></div><div class="text" id="bText"></div></div>
+<div class="card"><div class="secTitle">💥 他们为什么会有戏</div><div class="text" id="dynamic"></div><div class="special" id="special"></div></div>
+<div class="card"><div class="secTitle">🎬 如果现在就开第一章</div><div class="text" id="scene"></div></div>
+<div class="card"><div class="secTitle">💬 写他们对话时</div><div class="text" id="dialogue"></div></div>
+<div class="actions"><button class="btn" id="again">🔄 这组不香，再换</button><button class="btn" id="copy">📋 复制给 ChatGPT 写</button></div>
+<div class="small" id="status"></div>
+</section>
+
+<section class="explain"><b>怎么玩：</b>直接生成 → 看感觉 → 不喜欢就换。喜欢某组时复制提示词回来找我写。以后我们再加“锁定一个角色”“收藏”“只换关系”等功能。</section>
+</div>
+
+<script>
+const S=["裴","沈","贺","周","梁","闻","程","谢","郁","季","陆","祁","温","许","江","顾","林","韩","陈","霍"];
+const N=["既明","庭川","行舟","知遥","景澄","惟深","照临","柏言","明彻","序白","砚川","越衡","怀序","迟野","临川","闻洲","予安","景行","言川","沉舟"];
+const I=["法学院学生","建筑系学生","青年律师","纪录片摄影师","游戏主策","剧团编导","赛车俱乐部经营者","记者","科研团队骨干","创业公司合伙人","家族企业继承人","独立音乐人","博物馆策展助理","电竞数据分析师","投行分析师","高校青年教师"];
+const T=[
+["观察力很强","不爱解释","判断快"],["表面温和","控制欲强","情绪很稳"],["脾气不好","分寸极准","越生气越安静"],["社交能力强","私下疏离","讨厌被看透"],["反骨","行动力强","不接受别人替自己决定"],["冷淡","记仇","非常护短"],["随性外表","秩序感极强","很少真正信任人"],["嘴很毒","心思细","很少主动示弱"],["克制","锋利","自尊心很强"],["看起来好相处","边界感很重","一旦认定很固执"]
+];
+const D=[
+"两个人最开始只是互相判断。后来却逐渐默认对方拥有别人没有的权限。",
+"他们在人前一直很正常，真正的关系只存在于彼此听得懂的半句话里。",
+"一方习惯控制节奏，另一方偏偏不配合。那套控制对所有人都有效，唯独在这个人身上经常失效。",
+"他们长期意见不合，也因此比任何人都清楚对方会怎么想。越容易刺中彼此，也越知道哪些地方绝对不能碰。",
+"两个人都不擅长交心，所以亲密不靠倾诉建立，而靠一次次默认、越界与默许。",
+"他们站在不同立场，却发现对方是少数真正理解自己判断方式的人。理解先于喜欢发生。",
+"他们谁都没打算靠近谁，但注意力已经先一步失控。"
+];
+const P=[
+"他对别人从不解释第二遍，但对方皱眉时，会停下来重新说一次。",
+"他最讨厌计划被打乱，可对方临时改安排时，他只沉默几秒，随后改了自己的行程。",
+"他不替任何人收拾烂摊子，却习惯在对方开口前把麻烦处理掉。",
+"他在人群里从不主动找谁，却总能准确知道对方站在哪里。",
+"他几乎不会因为别人改变判断，唯独对这个人会反复推翻先前的结论。",
+"别人拿他的东西会被当场制止。这个人拿走时，他只问：什么时候还。",
+"他对谁都很有耐心，偏偏面对这个人最容易冷脸，因为只有对方真能影响他的情绪。"
+];
+const C=[
+"凌晨两点，两个人被迫一起等一个结果。闲聊慢慢变成互相拆穿。",
+"一次合作结束后，所有人都走了，他们因为一个很小的细节留了下来，最后发现彼此记得太多对方的习惯。",
+"第三个人评价他们‘关系好像很好’。两个人都否认。真正的戏发生在第三个人离开以后。",
+"其中一人第一次发现，对方对自己和对别人使用的是两套判断标准。他没有拆穿，只把这件事记了下来。",
+"他们因为一件小事产生分歧。谁都没发火，也谁都不肯走。对话绕出去又绕回来，最后碰到真正的问题。"
+];
+const Q=[
+"别急着一句一答结束。让他们聊十几轮，允许打断、改口、绕开和重新追问。",
+"两个人必须有不同的说话节奏：一个偏精准，一个偏绕；一个习惯直问，一个把答案藏在最后一句。",
+"允许废话、岔题和无关的小事。关系经常就是在这些‘没用的话’里显出来。",
+"别靠‘你是不是喜欢我’这种直接台词制造暧昧。让他们讨论另一件事，却都知道真正谈的是什么。",
+"不要连续用短促台词假装有张力。真正的张力来自立场不同，但谁都没结束这场谈话。"
+];
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const makeName=u=>{for(let i=0;i<100;i++){let n=pick(S)+pick(N);if(!u.includes(n))return n}return pick(S)+pick(N)};
+const hist=()=>{try{return JSON.parse(localStorage.getItem("meimei_cp_hist")||"[]")}catch{return[]}};
+const save=h=>localStorage.setItem("meimei_cp_hist",JSON.stringify(h.slice(0,30)));
+const tags=a=>a.map(x=>"<span>"+x+"</span>").join("");
+
+function gen(){
+ const h=hist(),used=h.flatMap(x=>[x.a,x.b]); const a=makeName(used),b=makeName([...used,a]);
+ const ia=pick(I); let ib=pick(I); while(ib===ia)ib=pick(I);
+ const ta=pick(T); let tb=pick(T); while(tb===ta)tb=pick(T);
+ const dyn=pick(D),sp=pick(P),sc=pick(C),dia=pick(Q);
+ pairtitle.textContent=a+" × "+b;
+ aName.textContent=a;aTags.innerHTML=tags([ia,...ta]);aText.textContent="让性格通过选择、反应和说话方式露出来，别直接下定义。";
+ bName.textContent=b;bTags.innerHTML=tags([ib,...tb]);bText.textContent="他必须有自己的目标和生活；就算删掉感情线，这个人也能单独成立。";
+ dynamic.textContent=dyn;special.textContent="只属于他们的例外："+sp;scene.textContent=sc;dialogue.textContent=dia;
+ const r={a,b,ia,ib,ta,tb,dyn,sp,sc,dia};h.unshift(r);save(h);window.cur=r;
+ out.classList.add("show");status.textContent="这台设备已记住最近 "+Math.min(h.length,30)+" 组，会尽量避开刚用过的人名。";
+ setTimeout(()=>out.scrollIntoView({behavior:"smooth",block:"start"}),60);
+}
+async function copyPrompt(){
+ if(!window.cur)return; const p=window.cur;
+ const t="请基于下面这对原创人物写小说片段。\n\n人物A："+p.a+"，"+p.ia+"。性格关键词："+p.ta.join("、")+"。\n人物B："+p.b+"，"+p.ib+"。性格关键词："+p.tb.join("、")+"。\n关系核心："+p.dyn+"\n特殊性："+p.sp+"\n开场方向："+p.sc+"\n\n写作要求：\n- 文笔优先，拒绝小白、机械、模板化表达。\n- 对话充分展开，以多轮来回为主，可以有停顿、打断、岔题和潜台词。\n- 两个人说话方式必须不同。\n- 少用勾唇、挑眉、眸色一沉、呼吸一滞等库存动作。\n- 不要直接替读者总结人物心理。\n- 人物有自己的生活和判断。\n- 不急着把感情说透。\n- "+p.dia;
+ try{await navigator.clipboard.writeText(t);alert("已复制，可以回 ChatGPT 粘贴。")}catch{prompt("长按复制：",t)}
+}
+document.getElementById("gen").addEventListener("click",gen);
+document.getElementById("again").addEventListener("click",gen);
+document.getElementById("copy").addEventListener("click",copyPrompt);
+</script>
+</body>
+</html>
