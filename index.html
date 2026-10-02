@@ -93,7 +93,7 @@ details summary{cursor:pointer;font-weight:750}.settings{margin-top:12px;display
 
 <div class="field">
 <label>惊喜度：<span id="surpriseText">60</span>%</label>
-<div class="rangeRow"><span class="muted">贴口味</span><input type="range" id="surprise" min="0" max="100" value="60"><span class="muted">乱来一点</span></div>
+<div class="rangeRow"><span class="muted">熟悉口味</span><input type="range" id="surprise" min="0" max="100" value="60"><span class="muted">给我惊喜</span></div>
 </div>
 </div>
 </details>
@@ -277,61 +277,127 @@ function buildPerson(role,index,g,old){
  return {id:uid(),role,name:uniqueName(),age,identity:pick(data.ids),trait,family:pick(FAMILIES),habit:pick(HABITS),flaw:pick(FLAWS)};
 }
 function profileText(p){
- return p.name+"，"+p.age+"岁，"+p.identity+"。"+p.family+"。"+p.trait+"，"+p.habit+"。他有一个不太讨喜的毛病："+p.flaw+"。";
+ return p.name+"，"+p.age+"岁，"+p.identity+"。"+p.family+"。平时"+p.habit+"。"+p.trait+"。真遇上自己在意的事时，"+p.flaw+"。";
 }
+function sceneKit(meeting,g){
+ const s=meeting||"一次临时碰面";
+ if(/酒吧|庆功宴|饭局|会所/.test(s))return {place:"靠近后门的窄走廊",prop:"一部落下的手机",sound:"门里低低的音乐声和玻璃杯碰在一起的响动",delay:"前台说失物登记的人还要十分钟才回来"};
+ if(/婚礼|晚宴|颁奖|红毯/.test(s))return {place:"酒店宴会厅外的长廊",prop:"一张压在托盘下面的房卡套",sound:"宴会厅里断断续续的掌声",delay:"工作人员正在清场，他们暂时进不去"};
+ if(/机场|航班|接驳/.test(s))return {place:"登机口最里面一排空座旁",prop:"一张被拿错的登机牌",sound:"广播反复播着延误通知",delay:"新的登机时间还没出来"};
+ if(/医院|急诊|伤者|证人/.test(s))return {place:"急诊楼二层的自动贩卖机旁",prop:"一只装着检查单的牛皮纸袋",sound:"推床轮子碾过地砖的声音",delay:"护士让他们再等二十分钟"};
+ if(/自习室|礼堂|辩论|封校|社团/.test(s))return {place:"教学楼侧门的屋檐下",prop:"一张临时门禁卡",sound:"雨点密密砸在金属遮雨棚上",delay:"值班老师去另一栋楼了，一时半会儿回不来"};
+ if(/拍摄|替身|造型|收工|片场/.test(s))return {place:"摄影棚后面的化妆间门口",prop:"一页被折过角的剧本",sound:"场务在远处拖设备箱的轱辘声",delay:"下一场临时改景，所有人都被赶出来等"};
+ if(/排位|线下赛|训练室|直播|外设/.test(s))return {place:"俱乐部训练室外的小休息区",prop:"一只贴错名字的外设包",sound:"隔音门里隐约传出的键盘声",delay:"管理员正在核对物品，他们只能等"};
+ if(/案件|审讯|卷宗|线索|调查/.test(s))return {place:"停车场通往办公楼的安全通道",prop:"一个封口没贴牢的文件袋",sound:"楼上传来的脚步声和短促的电话铃",delay:"负责交接的人被临时叫走了"};
+ if(/上元|废寺|送信|宫门|旧案/.test(s))return {place:"廊下避雨的石阶边",prop:"一封被雨气打潮的信",sound:"檐角水珠一串串落在青石上",delay:"前路封了，他们只能等雨势小些"};
+ if(/梦|地铁|异常|旧物/.test(s))return {place:"末班地铁停运后的空站台",prop:"一张两个人手里都出现过的旧票",sound:"隧道深处很久才响一次的风声",delay:"出口的卷帘门莫名其妙落了下来"};
+ return {place:"临街便利店外的塑料棚下",prop:"一把被拿错的黑伞",sound:"车轮压过积水的声音",delay:"共同朋友说至少还要二十分钟才到"};
+}
+
 function buildEvent(story){
- const data=dataForGenre(story.genre), core=pick(data.events), names=story.people.map(p=>p.name);
- if(story.people.length===2){
-   const a=names[0],b=names[1];
-   const after=pick([
-     "原本两个人都以为这只是一次偶然，第二周却因为共同朋友又见了一次。第三次见面时，已经没人再把它归类为巧合。",
-     "那晚互相没留联系方式。三天后，"+a+"在完全不相干的场合又看见了"+b+"，而对方显然也认出了他。",
-     "真正让他们继续见面的，是第二天一个没处理干净的小麻烦。"+b+"先发来消息，开头只有一句：昨晚那件事，还没完。",
-     "他们第一印象都算不上好。偏偏那件事留下了后续，两个人不得不在接下来一个月里反复碰面。"
-   ]);
-   return a+"和"+b+"第一次真正说上话，是因为"+core+"。当时谁都没有刻意表现得友好，甚至有一点彼此嫌麻烦。"+after;
+ const meeting=story.meeting||pick(dataForGenre(story.genre).events), k=sceneKit(meeting,story.genre), ps=story.people;
+ if(ps.length===2){
+   const a=ps[0],b=ps[1];
+   return "事情起在"+meeting+"。"+a.name+"赶到"+k.place+"时，"+b.name+"已经在那里了，手边正放着"+k.prop+"。"+
+   a.name+"本来只打算把东西拿走，"+b.name+"却告诉他："+k.delay+"。两个人只好留下来等。"+
+   "等人的二十来分钟里，他们先为"+k.prop+"到底是谁拿错的争了几句，后来又从共同认识的人聊到各自第二天的安排。"+
+   "分别前，"+b.name+"把自己的号码输进"+a.name+"手机里，说等事情处理完记得发一声。第二天上午，"+a.name+"真的收到了他的第二条消息。";
  }
- const center=names[0],others=names.slice(1);
- return center+"第一次同时和"+others.join("、")+"有交集，是因为"+core+"。那本来只是一件应该当晚结束的小事，却分别给几个人都留下了不同的后续：有人欠了人情，有人拿错了东西，有人记住了一句没说完的话。接下来的两周，他们在不同场合里重新遇见，关系也因此没有机会干净地停在“认识”这一步。";
+ const center=ps[0],others=ps.slice(1), names=others.map(x=>x.name);
+ return "事情起在"+meeting+"。"+center.name+"到"+k.place+"的时候，"+names.join("、")+"已经先后到了。"+
+ "几个人原本只是为了处理"+k.prop+"这件事，被"+k.delay+"硬生生留在原地。"+
+ "等待期间有人打电话、有人去买水、有人把话题扯远，等负责的人回来时，他们已经把彼此的名字和联系方式都记住了。"+
+ "第二天，这件小事又留下了一个没处理干净的尾巴，他们因此有了第二次见面的理由。";
 }
+
 function buildChapter(story,variant){
- const ps=story.people,a=ps[0],b=ps[1],more=ps.slice(2).map(x=>x.name);
- const line=FIRST_LINES[(variant||rand(0,FIRST_LINES.length-1))%FIRST_LINES.length];
- const extra=more.length?"。门外还有"+more.join("、")+"，只是此刻谁都没进来":"";
- return line+"\n\n"+
- a.name+"先看见的是"+b.name+"手里的东西，过了两秒才抬眼看人。关于他们为什么会同时出现在这里，谁都有一套很合理的解释，可真正说出口的只有一句：“你怎么还没走？”\n\n"+
- b.name+"像是没听出赶人的意思，把手里的东西往桌上一放。“我也想问你。”\n\n"+
- "这句话之后安静了几秒。"+a.name+"没接，低头看了一眼时间。"+a.habit+"，所以这种沉默对他来说通常意味着谈话已经结束。偏偏"+b.name+"没有动。\n\n"+
- "“刚才那件事，”"+b.name+"说，“你是不是早就看见了？”\n\n"+
- a.name+"这才重新看他。“看见什么？”\n\n"+
- "“你知道我说的是什么。”\n\n"+
- "“那你还问。”\n\n"+
- b.name+"笑了一下，幅度很淡，倒更像确认了某件事。“行。那换一个问题。你为什么帮我？”\n\n"+
- "这次"+a.name+"停得更久。他当然可以给出很多答案：顺手、嫌麻烦、事情发生在眼前、不想让局面更难看。每一个都成立，又都不完全成立。最后他说：“你把这件事想得太重要了。”\n\n"+
- "“我没有。”"+b.name+"说，“我只是觉得你这个人挺奇怪。”\n\n"+
- "“彼此。”\n\n"+
- "两个人第一次真正对上视线。外面的声音隔着门传进来，有人经过，又走远"+extra+"。谁都没有再提离开。\n\n"+
- "十分钟后，他们已经从刚才的事聊到了完全无关的话题。"+b.name+"问得不算多，却总能在"+a.name+"准备结束一句话的时候追上下一句；"+a.name+"明显有几次不想回答，最后还是回答了。谈话没有任何值得被称作暧昧的地方，甚至有点互相挑刺。\n\n"+
- "直到临走前，"+b.name+"拿起手机，忽然说：“把你号码给我。”\n\n"+
- a.name+"看他：“理由。”\n\n"+
- "“今天这事还没处理完。”\n\n"+
- "“你刚才不是说没那么重要？”\n\n"+
- b.name+"顿了一下：“我改主意了。”\n\n"+
- "这一次，"+a.name+"没有继续问。";
+ const ps=story.people;
+ const pov=ps.find(p=>p.role==="受")||ps[0];
+ const other=ps.find(p=>p.id!==pov.id)||ps[1];
+ const meeting=story.meeting||pick(dataForGenre(story.genre).events);
+ const k=sceneKit(meeting,story.genre);
+ const more=ps.filter(p=>p.id!==pov.id&&p.id!==other.id).map(p=>p.name);
+ const alt=(variant||0)%3;
+ const opener=alt===1
+   ? k.sound+"。"+pov.name+"把手机从口袋里摸出来看了一眼，屏幕上还是没有新消息。"
+   : alt===2
+   ? pov.name+"找到"+k.place+"的时候，先看见了"+k.prop+"，然后才看见旁边的人。"
+   : k.sound+"。"+pov.name+"走到"+k.place+"时，"+other.name+"正低头看着"+k.prop+"。";
+ const extra=more.length?"门外偶尔有人经过，其中还有"+more.join("、")+"，但没人进来。":"";
+ return opener+"\n\n"+
+ "“是这个？”"+pov.name+"朝"+k.prop+"抬了抬下巴。\n\n"+
+ other.name+"把东西往他那边推了推。“你先别拿。刚才有人来问过，说登记还没做完。你现在带走，等会儿他们对不上记录，又得重新找人。”\n\n"+
+ "“我只是来拿个东西，怎么还能赶上流程审批。”\n\n"+
+ "“这已经是我替你问的第三个人了。”\n\n"+
+ pov.name+"这才看他一眼。“我让你问了？”\n\n"+
+ "“没有。”"+other.name+"把手机揣回去，“我站这儿闲着也是闲着。你要是不领情，就当我多管闲事。”\n\n"+
+ "“你讲话一直这么客气？”\n\n"+
+ "“看人。”\n\n"+
+ "“那我待遇还挺特别。”\n\n"+
+ "“你要这么理解，也行。”\n\n"+
+ pov.name+"没接这句。他把外套拉链往上提了一点，转头看向另一边。"+k.delay+"。他本来还约了人吃宵夜，现在看来只能迟到。\n\n"+
+ "手机震了一下。朋友问他到哪了。\n\n"+
+ pov.name+"低头回消息：还没拿到，你们先吃。\n\n"+
+ other.name+"扫见屏幕亮起，问：“有人等你？”\n\n"+
+ "“嗯。”\n\n"+
+ "“那你先走吧。我等登记的人回来，东西拿到以后让共同朋友转给你。”\n\n"+
+ pov.name+"按灭手机。“你认识我朋友多久？”\n\n"+
+ "“哪个？”\n\n"+
+ "“叫你过来这个。”\n\n"+
+ "“两年多。”"+other.name+"想了想，又补了一句，“不过他平时没这么会给人添麻烦。今天算超常发挥。”\n\n"+
+ pov.name+"笑了一声。“那是因为你跟他不熟。”\n\n"+
+ "“听起来你很有发言权。”\n\n"+
+ "“大学四年，替他找过三次钱包，两次身份证，一次猫。”\n\n"+
+ "“猫也能丢？”\n\n"+
+ "“不是丢。他前任把猫抱走了，他喝多以后非说是失窃，让我陪他去报警。”\n\n"+
+ other.name+"终于笑出来。“然后呢？”\n\n"+
+ "“然后警察让他先醒酒。”\n\n"+
+ "“你真陪他去了？”\n\n"+
+ "“不然呢，我把一个喝多的人扔派出所门口？”\n\n"+
+ "“看不出来。”\n\n"+
+ "“看不出来什么？”\n\n"+
+ "“你还挺有耐心。”\n\n"+
+ pov.name+"转过头。“你见我不到半小时，已经开始给我下结论了？”\n\n"+
+ "“不是结论。”"+other.name+"说得很慢，“只是发现你跟刚才看起来不太一样。”\n\n"+
+ "“刚才我看起来什么样？”\n\n"+
+ "“像拿到东西就会直接走，谁跟你说话都嫌耽误时间。”\n\n"+
+ "“那你现在最好别跟我说话。”\n\n"+
+ "“晚了。”\n\n"+
+ "“什么晚了？”\n\n"+
+ "“已经说这么多了。”\n\n"+
+ pov.name+"盯着他两秒，没忍住又笑了一下。外面"+k.sound+"。有人从走廊尽头喊了一声，却不是叫他们。"+extra+"\n\n"+
+ "等人的时间比想象中长。两个人后来又聊到附近哪家店难吃、共同朋友为什么总喜欢迟到，甚至争了半天手机导航到底该不该相信。"+
+ pov.name+"中途看过两次时间，却都没真的走。\n\n"+
+ "负责登记的人终于回来，把"+k.prop+"递给他。"+pov.name+"确认了一遍，正准备离开，"+other.name+"忽然叫住他。\n\n"+
+ "“等一下。”\n\n"+
+ "“又怎么了？”\n\n"+
+ "“留个号码。”\n\n"+
+ pov.name+"没动。“为什么？”\n\n"+
+ "“今天这件事还有个后续。要是明天他们又来找，我懒得再通过第三个人传话。”\n\n"+
+ "“你可以不管。”\n\n"+
+ "“我都管到现在了。”"+other.name+"把手机解锁，递过来，“再多一步也没什么。”\n\n"+
+ pov.name+"接过手机，在联系人那一栏输入自己的号码。写完名字时，他停了一下，抬头问：“你叫什么来着？”\n\n"+
+ other.name+"看着他，像是被气笑了。“刚聊了快四十分钟。”\n\n"+
+ "“所以？”\n\n"+
+ "“"+other.name+"。”\n\n"+
+ pov.name+"把名字补上，把手机还回去。“行，现在记住了。”";
 }
+
 function specialLine(story){
  const a=story.people[0],b=story.people[1];
  return pick([
-   a.name+"对别人很少解释第二遍，后来却会在"+b.name+"皱眉时停下来换一种说法。",
-   a.name+"最讨厌计划被打乱，只有"+b.name+"临时改安排时，他会沉默几秒后直接改自己的行程。",
-   b.name+"不喜欢欠人情，可他欠"+a.name+"的那几次，从来没有急着还清。",
-   "他们对彼此最早的特殊并不温柔：太在意对方的反应，所以反而更容易冷脸。"
+   "后来有一次，"+b.name+"临时把见面时间改晚了两个小时。"+a.name+"在聊天框里打了半天字，最后只回了一个“行”，然后把自己原来的安排往后挪。",
+   a.name+"第一次去"+b.name+"住处时，发现自己的号码被单独设了铃声。"+b.name+"被问起，只说手机平时静音，怕漏掉急事。",
+   "有一回朋友拿了"+a.name+"桌上的充电器，被他当场要了回来。半小时后"+b.name+"顺手拿走同一个，他看见了，只问晚上记得带回来。",
+   b.name+"生病那次谁都没告诉。"+a.name+"是从一条只有两秒钟的语音里听出来的，当晚就去了他家。第二天朋友问起，他只说刚好顺路。"
  ]);
 }
+
 function buildStory(keepLocked){
  const g=chosenGenre(),roles=rolePlan(),old=current?current.people:[];
  const people=roles.map((role,i)=>buildPerson(role,i,g,keepLocked&&locked.has(i)?old[i]:null));
- const s={id:current&&keepLocked?current.id:uid(),created:Date.now(),genre:g,mode:$("mode").value,ageGap:$("ageGap").value,heat:$("heat").value,people,locked:[],event:"",special:"",chapter:"",timeline:current&&keepLocked?(current.timeline||[]):[],rating:current&&keepLocked?current.rating:"",feedback:current&&keepLocked?current.feedback:"",favorite:current&&keepLocked?current.favorite:false};
+ const meeting=keepLocked&&current&&current.meeting?current.meeting:pick(dataForGenre(g).events);
+ const s={id:current&&keepLocked?current.id:uid(),created:Date.now(),genre:g,mode:$("mode").value,ageGap:$("ageGap").value,heat:$("heat").value,people,meeting,locked:[],event:"",special:"",chapter:"",timeline:current&&keepLocked?(current.timeline||[]):[],rating:current&&keepLocked?current.rating:"",feedback:current&&keepLocked?current.feedback:"",favorite:current&&keepLocked?current.favorite:false};
  s.event=buildEvent(s);s.special=specialLine(s);s.chapter=buildChapter(s);return s;
 }
 function persistCurrent(){
@@ -354,37 +420,138 @@ function renderStory(){
 function renderRating(){document.querySelectorAll(".rate").forEach(b=>b.classList.toggle("on",b.dataset.rating===selectedRating))}
 function makeScene(type){
  if(!current)return "";
- const a=current.people[0],b=current.people[1],others=current.people.slice(2).map(p=>p.name);
- const opening={
- "告白":b.name+"原本没打算在今天说。",
- "分手":"真正说到分手的时候，房间里反而很安静。",
- "久别重逢":"他们已经很久没有这样面对面站着。",
- "破镜重圆":"重逢以后，两个人都装作那几年已经过去得很干净。",
- "吃醋":a.name+"是在第三个人第二次叫"+b.name+"名字时才抬头的。",
- "第一次接吻":"那一刻之前，谁都没有把话说到这一步。",
- "争吵":"他们很少真正吵起来，因为两个人都太知道什么时候该停。",
- "冷战":"冷战的第三天，谁都没有先发消息。",
- "第一次心动":a.name+"后来一直没承认，那一秒其实已经足够明显。",
- "暧昧失控":"原本只是一次很普通的靠近，偏偏谁都没有及时退开。",
- "确认关系":"确定关系那天没有花，也没有任何仪式。",
- "朋友面前露馅":"朋友只是随口问了一句，桌上却安静了半秒。",
- "生病瞒着对方":b.name+"说自己没事的时候，声音和平时差得太明显。",
- "凌晨四点的一通电话":"凌晨四点零七分，电话响了。",
- "多年以后":"很多年以后，他们已经很少再提最开始那些事。"
- }[type]||("关于“"+type+"”这件事，他们谁都没提前准备。");
- const otherText=others.length?"至于"+others.join("、")+"，每个人都从这件事里看出了不同的东西。":"";
- return opening+"\n\n"+
- b.name+"先开口：“你今天到底怎么了？”\n\n"+
- a.name+"没有立刻回答。他最擅长把真正重要的话拖到最后，可这次"+b.name+"没有给他绕开的机会。\n\n"+
- "“别说没事。”"+b.name+"看着他，“你一说没事，我就知道有事。”\n\n"+
- "这句话让"+a.name+"安静下来。过了很久，他才说：“你为什么一定要知道？”\n\n"+
- b.name+"几乎没有想：“因为是你。”\n\n"+
- "他们都知道这四个字太轻，也太重。它没有解决任何问题，却把原本还能装作不存在的东西一下推到了眼前。\n\n"+
- a.name+"低声问：“所以呢？”\n\n"+
- b.name+"看了他一会儿。“所以你别逼我每次都猜。”\n\n"+
- otherText+"\n\n"+
- "这一幕没有立刻得到一个漂亮答案。可从这天以后，他们再也没办法把关系退回原来的位置。";
+ const ps=current.people,a=ps[0],b=ps[1],others=ps.slice(2).map(p=>p.name);
+ const third=others.length?others[0]:"陈放";
+ if(type==="分手"){
+   return "玄关的行李箱已经合上了，拉杆没有收回去。"+b.name+"站在餐桌旁，把那串用了两年的钥匙放到桌面上。\n\n"+
+   a.name+"看了一眼。“你非得今晚走？”\n\n"+
+   "“房子下午已经看好了。”\n\n"+
+   "“我问的是今晚。”\n\n"+
+   b.name+"把桌上没喝完的水拧紧。“明早八点有事，我不想六点起来收东西。”\n\n"+
+   "“所以你连什么时候看的房子都不用告诉我。”\n\n"+
+   "“告诉你做什么？让你帮我挑朝向？”\n\n"+
+   a.name+"被噎了一下，伸手把钥匙拿起来，又放下。“你能不能别每句话都这么说。”\n\n"+
+   "“我怎么说了？”\n\n"+
+   "“像我们现在谈的是搬家。”\n\n"+
+   b.name+"抬头看他。“那你想谈什么？”\n\n"+
+   "客厅里很安静。冰箱压缩机忽然启动，嗡的一声。"+a.name+"原本准备好的那几句话全卡住了。\n\n"+
+   "“上周那件事我已经解释过了。”\n\n"+
+   "“我知道。”\n\n"+
+   "“你不信？”\n\n"+
+   "“我信。”"+b.name+"说，“我也没因为那件事跟你分手。”\n\n"+
+   "“那是因为什么？”\n\n"+
+   b.name+"看了他一会儿。“你真的不知道？”\n\n"+
+   a.name+"没说话。\n\n"+
+   "“我过敏不能吃什么，你到现在记不全。去年我换工作，你是第三天才知道。你每次说忙，我都觉得没关系，反正我自己的事也能处理。时间久了我才发现，什么都能自己处理的人，好像也不太需要谈恋爱。”\n\n"+
+   "“你现在是在算旧账？”\n\n"+
+   "“对。”"+b.name+"很平静，“今天就算一次。以后不算了。”\n\n"+
+   a.name+"手里的钥匙硌进掌心。他想反驳，又发现每一件都是真的。\n\n"+
+   "“你搬出去以后呢？”\n\n"+
+   "“上班，吃饭，睡觉。”\n\n"+
+   "“我是问我们。”\n\n"+
+   b.name+"拉起行李箱。“我也是。”";
+ }
+ if(type==="告白"){
+   return "车停在路边已经十几分钟，雨刮器偶尔扫一下前挡风玻璃。"+a.name+"送"+b.name+"回来，却一直没开中控锁。\n\n"+
+   b.name+"看了一眼时间。“还有事？”\n\n"+
+   "“有。”\n\n"+
+   "“那你说。”\n\n"+
+   a.name+"没说，先把暖风调低了一档。\n\n"+
+   b.name+"等了半分钟，笑了。“你把我扣在车里，就是为了研究空调？”\n\n"+
+   "“你能不能安静一会儿。”\n\n"+
+   "“我已经安静十分钟了。”\n\n"+
+   "“才三分钟。”\n\n"+
+   "“你还计时？”\n\n"+
+   a.name+"偏过头。“"+b.name+"，我最近是不是对你太好了？”\n\n"+
+   b.name+"一时没听懂。“你今天把我叫住，是准备跟我清算油费？”\n\n"+
+   "“我是认真问。”\n\n"+
+   "“那我也认真回答。一般。上周我让你帮我带咖啡，你还忘了。”\n\n"+
+   "“我后来给你送公司去了。”\n\n"+
+   "“晚上九点。”\n\n"+
+   "“因为我开完会才想起来。”\n\n"+
+   b.name+"看着他，忽然不说话了。\n\n"+
+   a.name+"把视线移回前挡风玻璃。“我以前不会记这些。你几点下班，喝什么，开会的时候有没有吃饭，跟谁出去……我现在全知道。你一整天不给我回消息，我还会觉得烦。”\n\n"+
+   b.name+"慢慢问：“所以？”\n\n"+
+   "“所以我想了很久。”"+a.name+"停了一下，“可能不是因为我最近变闲了。”\n\n"+
+   "雨刮器又扫过去一次。\n\n"+
+   b.name+"靠回座椅。“你这算告白？”\n\n"+
+   "“你要是不满意，我可以重说。”\n\n"+
+   "“别。”"+b.name+"终于笑了，“就这个吧。挺像你的。”";
+ }
+ if(type==="破镜重圆"||type==="久别重逢"){
+   return "咖啡已经凉了，"+b.name+"才推门进来。他比约定时间晚了十二分钟，坐下第一句话却是：“路上堵。”\n\n"+
+   a.name+"看着他把外套搭到椅背上。“你以前迟到也这么说。”\n\n"+
+   "“那你以前不是照样等。”\n\n"+
+   "“现在也等了。”\n\n"+
+   b.name+"手上的动作停了一下。“所以你找我到底什么事？”\n\n"+
+   a.name+"把桌上的文件推过去。“共同朋友托我给你的。电子版他不放心，说里面有几页要你亲自签。”\n\n"+
+   "“让快递送就行。”\n\n"+
+   "“他说你最近换地址了。”\n\n"+
+   "“嗯。”\n\n"+
+   "“又搬？”\n\n"+
+   b.name+"抬眼。“你现在还管这个？”\n\n"+
+   a.name+"没接。他端起咖啡喝了一口，已经完全凉透。\n\n"+
+   b.name+"低头翻文件，翻到最后一页时忽然问：“你还是喝美式？”\n\n"+
+   "“你不也没换。”\n\n"+
+   "“我点的是茶。”\n\n"+
+   a.name+"看了眼他手边的杯子。\n\n"+
+   b.name+"笑了一下。“看吧。你也不是所有事都记得。”\n\n"+
+   "“我记得你胃不好以后不空腹喝咖啡。”\n\n"+
+   "这次换"+b.name+"安静。\n\n"+
+   "服务员过来问要不要续杯。"+a.name+"说不用，"+b.name+"却忽然说：“再坐一会儿吧。”\n\n"+
+   a.name+"看向他。\n\n"+
+   "“文件我还没看完。”"+b.name+"低头继续翻，“你别想多。”\n\n"+
+   "“我什么都没说。”\n\n"+
+   "“你以前也这样。”\n\n"+
+   "“哪样？”\n\n"+
+   b.name+"没回答，只把签字笔从他手边拿了过去。";
+ }
+ if(type==="吃醋"){
+   return third+"第三次给"+b.name+"倒酒时，"+a.name+"终于把自己的杯子放下了。\n\n"+
+   "“他自己有手。”\n\n"+
+   third+"愣了一下，笑着说：“我就顺手。”\n\n"+
+   b.name+"看了"+a.name+"一眼。“你今天怎么这么多事？”\n\n"+
+   "“我提醒他一下。”\n\n"+
+   "“提醒什么？”\n\n"+
+   "“你不喝甜酒。”\n\n"+
+   b.name+"低头看了一眼杯子。“我什么时候跟你说过？”\n\n"+
+   "“上个月。”\n\n"+
+   "“上个月我跟你说的是太甜的鸡尾酒不喝。这个不是。”\n\n"+
+   a.name+"被堵得没话，过了两秒才说：“那你喝。”\n\n"+
+   b.name+"真的端起来喝了一口。\n\n"+
+   a.name+"脸色更难看了。\n\n"+
+   "等饭局散了，"+b.name+"在电梯里问：“你刚才到底怎么回事？”\n\n"+
+   "“没怎么。”\n\n"+
+   "“你再说一次没怎么，我就真信了。”\n\n"+
+   a.name+"盯着电梯数字。“他一直跟你说话。”\n\n"+
+   "“饭桌上不说话干什么？”\n\n"+
+   "“他还给你夹菜。”\n\n"+
+   "“公筷。”\n\n"+
+   "“重点是公筷？”\n\n"+
+   b.name+"终于偏过脸看他。“那重点是什么？”\n\n"+
+   "电梯叮地一声到了一楼。门开了，"+a.name+"却没出去。\n\n"+
+   "“算了。”他说。\n\n"+
+   b.name+"伸手按住开门键。“不算。你把话说完。”";
+ }
+ const place=pick(["楼下便利店","停车场出口","厨房水池旁","酒店走廊","深夜空着的客厅"]);
+ return place+"的灯亮得有点过分。"+b.name+"把手里的东西放下，先问：“你今天是不是有什么话想说？”\n\n"+
+ a.name+"没有马上回答。“为什么这么问？”\n\n"+
+ "“因为你已经绕了二十分钟。”\n\n"+
+ "“我是在想怎么说。”\n\n"+
+ "“那你慢慢想，我去拿水。”\n\n"+
+ "“你等等。”\n\n"+
+ b.name+"停下来。“又怎么了？”\n\n"+
+ a.name+"看着他，最后还是把刚才准备好的那套说辞咽了回去。“算了，先说别的。你今天为什么没回我消息？”\n\n"+
+ "“忙。”\n\n"+
+ "“忙到晚上十一点？”\n\n"+
+ "“你是在查岗？”\n\n"+
+ "“我是在问。”\n\n"+
+ b.name+"拉开椅子坐回去。“那你问清楚一点。你到底想知道我今天在做什么，还是想知道我为什么没告诉你？”\n\n"+
+ a.name+"沉默了两秒。“后一个。”\n\n"+
+ "“这不就说清楚了。”\n\n"+
+ "后面的话终于有了入口。谁也没急着结束这场谈话。";
 }
+
 function renderTimeline(){
  const tl=current&&current.timeline||[];
  $("timeline").innerHTML=tl.length?tl.map((x,i)=>'<div class="timelineItem"><b>'+(i+1)+'. '+escapeHtml(x.title)+'</b><div class="muted" style="margin-top:4px">'+new Date(x.time).toLocaleDateString()+'</div><div class="prose" style="margin-top:6px">'+escapeHtml(x.text.slice(0,180))+(x.text.length>180?"…":"")+'</div></div>').join(""):'<div class="muted">喜欢的名场面可以钉在这里。中间没写的剧情完全可以留白。</div>';
@@ -404,7 +571,7 @@ $("saveGenre").onclick=()=>{const v=$("customGenre").value.trim();if(!v)return;l
 $("mode").onchange=updateModeUI;$("surprise").oninput=()=>$("surpriseText").textContent=$("surprise").value;
 $("generate").onclick=()=>{rememberPersona();locked=new Set();current=buildStory(false);persistCurrent();renderStory();setTimeout(()=>$("result").scrollIntoView({behavior:"smooth"}),80)};
 $("rerollUnlocked").onclick=()=>{if(!current)return;current=buildStory(true);persistCurrent();renderStory()};
-$("rerollRelation").onclick=()=>{if(!current)return;current.event=buildEvent(current);current.special=specialLine(current);current.chapter=buildChapter(current);persistCurrent();renderStory()};
+$("rerollRelation").onclick=()=>{if(!current)return;current.meeting=pick(dataForGenre(current.genre).events);current.event=buildEvent(current);current.special=specialLine(current);current.chapter=buildChapter(current);persistCurrent();renderStory()};
 $("rewriteChapter").onclick=()=>{if(!current)return;current.chapter=buildChapter(current,rand(0,FIRST_LINES.length-1));persistCurrent();renderStory();toast("第一章换了一种写法")};
 document.querySelectorAll(".rate").forEach(b=>b.onclick=()=>{selectedRating=b.dataset.rating;current.rating=selectedRating;renderRating();persistCurrent()});
 $("saveFeedback").onclick=()=>{if(!current)return;current.rating=selectedRating;current.feedback=$("feedback").value.trim();persistCurrent();toast("评价已经记住了")};
@@ -412,7 +579,7 @@ $("favorite").onclick=()=>{if(!current)return;current.favorite=!current.favorite
 $("makeCustomScene").onclick=()=>{const v=$("customScene").value.trim();if(v)showScene(v)};
 $("addTimeline").onclick=()=>{if(!current||!currentScene)return;current.timeline=current.timeline||[];current.timeline.push({title:currentScene.title,text:currentScene.text,time:Date.now()});persistCurrent();renderTimeline();toast("已经钉进时间线")};
 $("copyScene").onclick=async()=>{if(!currentScene)return;try{await navigator.clipboard.writeText(currentScene.text);toast("这一幕已复制")}catch{}};
-$("copyStory").onclick=async()=>{if(!current)return;const t="Storyloom 故事设定\n题材："+current.genre+"\n人物：\n"+current.people.map(p=>p.role+"｜"+profileText(p)).join("\n")+"\n\n相识："+current.event+"\n特殊性："+current.special+"\n\n第一章：\n"+current.chapter+"\n\n写作偏好：文笔成熟；对话充分展开且有潜台词；人物反应具体；避免小白文、模板动作和直接解释心理。";try{await navigator.clipboard.writeText(t);toast("整组设定已复制")}catch{}};
+$("copyStory").onclick=async()=>{if(!current)return;const t="Storyloom 故事设定\n题材："+current.genre+"\n人物：\n"+current.people.map(p=>p.role+"｜"+profileText(p)).join("\n")+"\n\n相识："+current.event+"\n特殊性："+current.special+"\n\n第一章：\n"+current.chapter+"\n\n正文规则：固定单一人物视角，不写站在故事外面的关系点评；能让读者从动作、物件、对话看出来的内容，不再替读者总结。情绪必须落在具体事件和细节上。对话要真正展开，允许十几轮甚至更多来回、岔题、打断、旧事和答非所问；冷淡不等于只说两三个字，强势也不等于句句命令。少用挑眉、勾唇、眸色一沉、指尖收紧、沉默片刻等库存动作。人物背景要影响他的选择和说话方式。每一章至少发生一件具体的事，并让关系在一个可见的小地方发生变化。允许人物嘴硬、误会、迁怒和不体面，不要把所有人写得过分会沟通。";try{await navigator.clipboard.writeText(t);toast("整组设定已复制")}catch{}};
 $("tabCreate").onclick=()=>switchTab("create");$("tabLibrary").onclick=()=>switchTab("library");
 $("showFav").onclick=()=>renderLibrary(true);
 $("exportFeedback").onclick=async()=>{const arr=load("storyloomStories",[]).filter(s=>s.rating||s.feedback).slice(0,20);const t="这是我最近在 Storyloom 里对故事的反馈，请帮我分析我的小说审美，并用于以后创作：\n\n"+arr.map((s,i)=>(i+1)+". "+s.genre+"｜"+s.people.map(p=>p.role+p.name+"("+p.trait+")").join("；")+"｜评分："+(s.rating||"未评分")+"｜意见："+(s.feedback||"无")).join("\n");try{await navigator.clipboard.writeText(t);toast("近期反馈已复制")}catch{}};
