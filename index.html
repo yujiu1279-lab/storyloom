@@ -33,7 +33,7 @@ details summary{cursor:pointer;font-weight:750}.settings{margin-top:12px;display
 <body>
 <div class="wrap">
 <section class="hero">
-<div class="brand">Storyloom</div>
+<div class="brand">Storyloom <span style="font-size:11px;color:#a8afbd;font-weight:600">v4.1</span></div>
 <div class="tagline">题材先决定世界，人设和职业必须对得上；有脑洞就把它当硬设定。Storyloom 再负责把人物、大纲、第一章和名场面接起来。</div>
 </section>
 
@@ -150,8 +150,8 @@ const pick=a=>a[Math.floor(Math.random()*a.length)];
 const rand=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k)||JSON.stringify(d))}catch{return d}};
-const save=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
-const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+const save=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}};
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 const toast=t=>{const x=$("toast");x.textContent=t;x.style.display="block";setTimeout(()=>x.style.display="none",1700)};
 
 const GENRES={
@@ -195,8 +195,8 @@ function renderGenres(){
 }
 function syncWorld(){
  const g=$("genre").value;
- if(GENRES[g]?.world){$("worldNote").value=GENRES[g].world;$("worldNote").disabled=true}
- else{$("worldNote").disabled=false;const r=customRecords().find(x=>x.name===g);$("worldNote").value=r?.world||""}
+ if(GENRES[g]&&GENRES[g].world){$("worldNote").value=GENRES[g].world;$("worldNote").disabled=true}
+ else{$("worldNote").disabled=false;const r=customRecords().find(x=>x.name===g);$("worldNote").value=(r&&r.world)||""}
 }
 function updateModeUI(){$("countField").style.display=$("mode").value==="1v1"?"none":"block"}
 function learnedGenre(){
@@ -212,7 +212,7 @@ function chosenGenre(){
 function genreData(g){
  if(GENRES[g])return GENRES[g];
  const rec=customRecords().find(x=>x.name===g);
- return {atk:["核心人物","掌权者","专业人士","自由职业者"],rec:["核心人物","专业人士","学生","自由职业者"],hooks:["一次临时合作","共同朋友牵线","一场意外","一次不得不见面的安排"],world:rec?.world||""}
+ return {atk:["核心人物","掌权者","专业人士","自由职业者"],rec:["核心人物","专业人士","学生","自由职业者"],hooks:["一次临时合作","共同朋友牵线","一场意外","一次不得不见面的安排"],world:(rec&&rec.world)||""}
 }
 function inferFromPlot(plot,role){
  let id="";
@@ -348,7 +348,7 @@ function buildChapter(story,variant){
    pov.name+"这次是真的愣了一下。\n\n"+
    "过了几秒，他才说：“你以前没让我规划过这个。”";
  }
- const hook=story.outline?.[0]?.[1]||"一次临时合作";
+ const hook=(story.outline&&story.outline[0]&&story.outline[0][1])||"一次临时合作";
  return pov.name+"第一次真正跟"+other.name+"坐下来聊天，是在一件本来很快就该结束的小事之后。\n\n"+
  "那天他们已经来回处理了两个小时，事情还剩最后一个环节。"+pov.name+"把手机放到桌上，先问了个很实际的问题：“你明天几点开始？”\n\n"+
  other.name+"看了眼日程。“九点。你呢？”\n\n"+
@@ -526,7 +526,7 @@ function makeScene(type){
 }
 function showScene(type){currentScene={title:type,text:makeScene(type)};$("sceneText").textContent=currentScene.text;$("sceneOutput").classList.remove("hidden")}
 function renderTimeline(){
- const tl=current?.timeline||[];$("timeline").innerHTML=tl.length?tl.map((x,i)=>'<div class="timelineItem"><b>'+(i+1)+'. '+esc(x.title)+'</b><div class="muted" style="margin-top:4px">'+new Date(x.time).toLocaleDateString()+'</div><div class="prose" style="margin-top:6px">'+esc(x.text.slice(0,200))+(x.text.length>200?"…":"")+'</div></div>').join(""):'<div class="muted">喜欢的名场面可以钉在这里。中间没写的剧情完全可以留白。</div>'
+ const tl=(current&&current.timeline)||[];$("timeline").innerHTML=tl.length?tl.map((x,i)=>'<div class="timelineItem"><b>'+(i+1)+'. '+esc(x.title)+'</b><div class="muted" style="margin-top:4px">'+new Date(x.time).toLocaleDateString()+'</div><div class="prose" style="margin-top:6px">'+esc(x.text.slice(0,200))+(x.text.length>200?"…":"")+'</div></div>').join(""):'<div class="muted">喜欢的名场面可以钉在这里。中间没写的剧情完全可以留白。</div>'
 }
 function renderLibrary(fav){
  const arr=load("storyloomStories",[]).filter(s=>!fav||s.favorite);
@@ -547,7 +547,7 @@ $("saveGenre").onclick=()=>{
  save("storyloomCustomGenreRecords",arr);renderGenres();$("genre").value=name;$("customGenre").value="";syncWorld();toast("题材已保存")
 };
 $("genre").onchange=syncWorld;$("mode").onchange=updateModeUI;$("surprise").oninput=()=>$("surpriseText").textContent=$("surprise").value;
-$("generate").onclick=()=>{locked=new Set();current=buildStory(false);persist();renderStory();setTimeout(()=>$("result").scrollIntoView({behavior:"smooth"}),80)};
+$("generate").onclick=()=>{try{locked=new Set();current=buildStory(false);renderStory();persist();setTimeout(()=>$("result").scrollIntoView({behavior:"smooth"}),80)}catch(e){toast("生成出错："+e.message);}};
 $("rerollUnlocked").onclick=()=>{if(!current)return;current=buildStory(true);persist();renderStory()};
 $("rerollOutline").onclick=()=>{if(!current)return;current.outline=buildOutline(current);current.chapter=buildChapter(current,rand(0,9));persist();renderStory()};
 $("rewriteChapter").onclick=()=>{if(!current)return;current.chapter=buildChapter(current,rand(0,9));persist();renderStory();toast("第一章已换一种写法")};
@@ -569,6 +569,7 @@ $("exportFeedback").onclick=async()=>{
  try{await navigator.clipboard.writeText(t);toast("近期反馈已复制")}catch{}
 };
 
+window.onerror=function(msg){try{toast("页面错误："+msg)}catch(e){}};
 renderGenres();updateModeUI();renderLibrary();renderSceneChips();
 </script>
 </body>
