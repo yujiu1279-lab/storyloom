@@ -7,26 +7,26 @@
 <style>
 :root{--bg:#0d0f14;--panel:#171a22;--panel2:#202431;--line:#303746;--text:#f6f7fb;--muted:#a8afbd;--p1:#9b8cff;--p2:#ff9bc8;--good:#79d7a6;--warn:#f2c675;--bad:#ee8f9b}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#0d0f14,#141824 55%,#0d0f14);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;min-height:100vh}
-button,input,select,textarea{font:inherit}.wrap{max-width:820px;margin:auto;padding:18px 14px 60px}
+button,input,select,textarea{font:inherit}.wrap{max-width:840px;margin:auto;padding:18px 14px 60px}
 .hero{padding:22px 18px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(135deg,rgba(155,140,255,.18),rgba(255,155,200,.09))}
-.brand{font-size:30px;font-weight:900;letter-spacing:.01em}.tagline{margin-top:7px;color:#d0d5df;font-size:14px;line-height:1.7}
+.brand{font-size:30px;font-weight:900}.tagline{margin-top:7px;color:#d0d5df;font-size:14px;line-height:1.72}
 .tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:13px}.tab{padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--text);font-weight:750}.tab.active{background:linear-gradient(135deg,rgba(155,140,255,.25),rgba(255,155,200,.15));border-color:#6f6899}
-.panel{margin-top:13px;background:rgba(23,26,34,.96);border:1px solid var(--line);border-radius:19px;padding:15px}.panel h2{font-size:16px;margin:0 0 12px}.muted{color:var(--muted);font-size:12px;line-height:1.65}
+.panel{margin-top:13px;background:rgba(23,26,34,.96);border:1px solid var(--line);border-radius:19px;padding:15px}.muted{color:var(--muted);font-size:12px;line-height:1.7}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:600px){.grid2{grid-template-columns:1fr}}
-.field label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--panel2);color:var(--text)}
-.field textarea{min-height:86px;resize:vertical}.inline{display:flex;gap:8px}.inline input{flex:1}.mini{padding:0 13px;border-radius:12px;border:1px solid var(--line);background:#292e3b;color:var(--text);font-weight:700}
+.field label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--panel2);color:var(--text)}.field textarea{min-height:100px;resize:vertical}
+.inline{display:flex;gap:8px}.inline input{flex:1}.mini{padding:0 13px;border-radius:12px;border:1px solid var(--line);background:#292e3b;color:var(--text);font-weight:700}
 .big{width:100%;margin-top:12px;padding:16px;border:0;border-radius:16px;background:linear-gradient(135deg,var(--p1),var(--p2));color:#111319;font-size:17px;font-weight:900}
-.secondary{padding:12px 13px;border:1px solid var(--line);border-radius:13px;background:var(--panel2);color:var(--text);font-weight:720}
+.secondary{padding:11px 13px;border:1px solid var(--line);border-radius:13px;background:var(--panel2);color:var(--text);font-weight:720}
 details summary{cursor:pointer;font-weight:750}.settings{margin-top:12px;display:grid;gap:11px}
 .card{margin-top:10px;padding:15px;border:1px solid var(--line);border-radius:17px;background:#12151c}.cardhead{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.role{font-size:12px;color:var(--p1);font-weight:800}.name{font-size:22px;font-weight:900;margin-top:3px}
-.badges span{display:inline-block;padding:5px 8px;border-radius:999px;background:#272c39;color:#dce0e8;font-size:12px;margin:5px 3px 0 0}.prose{font-size:14px;line-height:1.85;color:#e7e9ef;white-space:pre-wrap}
-.sectionTitle{font-size:13px;color:#c2c7d1;font-weight:800;margin-bottom:8px}.event{padding:13px;border-left:3px solid var(--p2);background:#1c202a;border-radius:11px}.chapter{padding:15px;background:#11141b;border-radius:15px;border:1px solid #282e3b}
+.badges span{display:inline-block;padding:5px 8px;border-radius:999px;background:#272c39;color:#dce0e8;font-size:12px;margin:5px 3px 0 0}.prose{font-size:14px;line-height:1.92;color:#e7e9ef;white-space:pre-wrap}
+.sectionTitle{font-size:13px;color:#c2c7d1;font-weight:800;margin-bottom:8px}.chapter{padding:15px;background:#11141b;border-radius:15px;border:1px solid #282e3b}
+.outline{display:grid;gap:9px}.beat{padding:12px 13px;border-left:3px solid var(--p1);background:#1b1f29;border-radius:11px}.beat b{display:block;margin-bottom:4px}
 .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px}.lock.on{border-color:var(--p2);color:#ffd9e9}.hidden{display:none!important}
 .rating{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.rate{padding:11px;border-radius:12px;border:1px solid var(--line);background:var(--panel2);color:var(--text)}.rate.on.good{border-color:var(--good)}.rate.on.mid{border-color:var(--warn)}.rate.on.bad{border-color:var(--bad)}
 .sceneChips{display:flex;flex-wrap:wrap;gap:7px}.chip{padding:9px 11px;border-radius:999px;border:1px solid var(--line);background:#242936;color:#eef0f5;font-size:13px}
-.timelineItem{padding:11px 0;border-top:1px dashed var(--line)}.timelineItem:first-child{border-top:0}
-.libItem{padding:13px;border:1px solid var(--line);border-radius:14px;background:#12151c;margin-top:9px}.libTop{display:flex;justify-content:space-between;gap:8px}.libName{font-weight:850}.libMeta{font-size:12px;color:var(--muted);margin-top:4px}.empty{text-align:center;padding:25px;color:var(--muted)}
-.rangeRow{display:flex;align-items:center;gap:10px}.rangeRow input{flex:1}
+.timelineItem{padding:11px 0;border-top:1px dashed var(--line)}.timelineItem:first-child{border-top:0}.libItem{padding:13px;border:1px solid var(--line);border-radius:14px;background:#12151c;margin-top:9px}.libTop{display:flex;justify-content:space-between;gap:8px}.libName{font-weight:850}.libMeta{font-size:12px;color:var(--muted);margin-top:4px}.empty{text-align:center;padding:25px;color:var(--muted)}
+.rangeRow{display:flex;align-items:center;gap:10px}.rangeRow input{flex:1}.note{padding:10px 12px;background:#1e2230;border-radius:12px;color:#cbd0dc;font-size:12px;line-height:1.7}
 .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:#262b38;border:1px solid var(--line);padding:10px 14px;border-radius:999px;font-size:13px;display:none;z-index:20}
 </style>
 </head>
@@ -34,7 +34,7 @@ details summary{cursor:pointer;font-weight:750}.settings{margin-top:12px;display
 <div class="wrap">
 <section class="hero">
 <div class="brand">Storyloom</div>
-<div class="tagline">把人物、关系和你突然想看的那一幕织出来。先满足当下的兴趣，喜欢了再慢慢长成一整个故事。</div>
+<div class="tagline">题材先决定世界，人设和职业必须对得上；有脑洞就把它当硬设定。Storyloom 再负责把人物、大纲、第一章和名场面接起来。</div>
 </section>
 
 <div class="tabs">
@@ -45,56 +45,54 @@ details summary{cursor:pointer;font-weight:750}.settings{margin-top:12px;display
 <div id="createView">
 <section class="panel">
 <details open>
-<summary>⚙️ 今天想捏什么</summary>
+<summary>⚙️ 故事设置</summary>
 <div class="settings">
+
 <div class="grid2">
-<div class="field">
-<label>题材</label>
-<select id="genre"></select>
-</div>
-<div class="field">
-<label>关系模式</label>
-<select id="mode">
-<option value="1v1">1v1</option>
-<option value="multiA">1受 × 多攻</option>
-<option value="multiR">1攻 × 多受</option>
-</select>
-</div>
+<div class="field"><label>题材 / 世界</label><select id="genre"></select></div>
+<div class="field"><label>关系模式</label><select id="mode"><option value="1v1">1v1</option><option value="multiA">1受 × 多攻</option><option value="multiR">1攻 × 多受</option></select></div>
 </div>
 
 <div class="grid2">
 <div class="field">
-<label>自定义题材（输入一次后会保存进题材列表）</label>
-<div class="inline"><input id="customGenre" placeholder="例如：香港豪门 / 电竞 / 刑侦"><button class="mini" id="saveGenre">保存</button></div>
+<label>新增自己的题材</label>
+<div class="inline"><input id="customGenre" placeholder="例如：民国戏班 / 港风豪门"><button class="mini" id="saveGenre">保存</button></div>
 </div>
-<div class="field" id="countField">
-<label>多人模式人数</label>
-<select id="multiCount"><option value="2">2个</option><option value="3" selected>3个</option><option value="4">4个</option></select>
+<div class="field" id="countField"><label>多人模式人数</label><select id="multiCount"><option value="2">2个</option><option value="3" selected>3个</option><option value="4">4个</option></select></div>
 </div>
+
+<div class="field">
+<label>自定义题材的世界观补充（可选，保存后跟着题材走）</label>
+<textarea id="worldNote" placeholder="例如：塔制哨向世界，有等级、精神体、精神链接和固定搭档制度。"></textarea>
 </div>
 
 <div class="grid2">
-<div class="field"><label>攻人设（可留空随机）</label><input id="atkPersona" list="atkList" placeholder="例如：年上控场、疯批但克制、阳光腹黑"><datalist id="atkList"></datalist></div>
-<div class="field"><label>受人设（可留空随机）</label><input id="recPersona" list="recList" placeholder="例如：冷淡嘴硬、漂亮但不好惹、钝感强"><datalist id="recList"></datalist></div>
+<div class="field"><label>攻身份 / 职业（留空则按题材生成）</label><input id="atkIdentity" placeholder="例如：金主 / 投资人 / S级哨兵"></div>
+<div class="field"><label>受身份 / 职业（留空则按题材生成）</label><input id="recIdentity" placeholder="例如：演员 / 向导 / 法学生"></div>
 </div>
 
 <div class="grid2">
-<div class="field">
-<label>年龄差</label>
-<select id="ageGap">
-<option>随机</option><option>同龄 / ±1</option><option>攻年上 2–5 岁</option><option>攻年上 6–10 岁</option><option>受年上 2–5 岁</option>
-</select>
+<div class="field"><label>攻性格 / 人设（可留空随机）</label><input id="atkPersona" placeholder="例如：前期冷漠、自负、控制欲强"></div>
+<div class="field"><label>受性格 / 人设（可留空随机）</label><input id="recPersona" placeholder="例如：清醒、冷淡、边界很硬"></div>
 </div>
-<div class="field">
-<label>关系气质</label>
-<select id="heat"><option>随机</option><option>慢热暗流</option><option>高张力</option><option>危险拉扯</option><option>势均力敌</option><option>轻松暧昧</option></select>
+
+<div class="grid2">
+<div class="field"><label>年龄差</label><select id="ageGap"><option>随机</option><option>同龄 / ±1</option><option>攻年上 2–5 岁</option><option>攻年上 6–10 岁</option><option>受年上 2–5 岁</option></select></div>
+<div class="field"><label>关系气质</label><select id="heat"><option>随机</option><option>慢热暗流</option><option>高张力</option><option>危险拉扯</option><option>势均力敌</option><option>轻松暧昧</option></select></div>
 </div>
+
+<div class="field">
+<label>我已经有一个脑洞 / 定制情节（可留空）</label>
+<textarea id="customPlot" placeholder="直接像聊天一样写。比如：娱乐圈文，受是演员，攻是前期冷漠的金主，只把受当情人；后来发现受也不在意他，只当工作，攻愤怒分手，真正分开后开始追妻。"></textarea>
+<div class="muted" style="margin-top:6px">这里的内容优先级最高。你写了“受是演员”“攻是金主”，生成结果就按这个走。</div>
 </div>
 
 <div class="field">
 <label>惊喜度：<span id="surpriseText">60</span>%</label>
 <div class="rangeRow"><span class="muted">熟悉口味</span><input type="range" id="surprise" min="0" max="100" value="60"><span class="muted">给我惊喜</span></div>
 </div>
+
+<div class="note"><b>正文规则已内置：</b>固定人物视角；少写“他们都知道 / 气氛微妙 / 他其实已经动心”这类关系点评；对话要真正聊起来，避免“你什么意思？—没什么意思。—确定？”这种空转；冷淡不等于只说两三个字。</div>
 </div>
 </details>
 <button class="big" id="generate">✨ 给我一个故事</button>
@@ -104,65 +102,42 @@ details summary{cursor:pointer;font-weight:750}.settings{margin-top:12px;display
 <div class="panel">
 <div class="sectionTitle">人物</div>
 <div id="characters"></div>
-<div class="actions">
-<button class="secondary" id="rerollUnlocked">🎲 只重抽没锁的人</button>
-<button class="secondary" id="rerollRelation">🔀 人物不动，只换相识</button>
-</div>
+<div class="actions"><button class="secondary" id="rerollUnlocked">🎲 只重抽没锁的人</button><button class="secondary" id="rerollOutline">🧭 人物不动，只换大纲</button></div>
 </div>
 
 <div class="panel">
-<div class="sectionTitle">他们怎么认识，又为什么会继续见面</div>
-<div class="event prose" id="eventText"></div>
+<div class="sectionTitle">故事大纲</div>
+<div id="outline" class="outline"></div>
 </div>
 
 <div class="panel">
 <div class="sectionTitle">第一章</div>
 <div class="chapter prose" id="chapterText"></div>
-<div class="actions">
-<button class="secondary" id="rewriteChapter">✍️ 换一种第一章写法</button>
-<button class="secondary" id="copyStory">📋 复制整组设定</button>
-</div>
+<div class="actions"><button class="secondary" id="rewriteChapter">✍️ 换一种第一章写法</button><button class="secondary" id="copyStory">📋 复制整组设定</button></div>
 </div>
 
 <div class="panel">
 <div class="sectionTitle">这组你吃不吃？</div>
-<div class="rating">
-<button class="rate good" data-rating="满意">😍 满意</button>
-<button class="rate mid" data-rating="一般">😐 一般</button>
-<button class="rate bad" data-rating="不满意">😖 不满意</button>
-</div>
-<div class="field" style="margin-top:10px"><textarea id="feedback" placeholder="随便说一句：哪个人设香、哪里俗、名字不喜欢、相识方式很好……"></textarea></div>
-<div class="actions">
-<button class="secondary" id="saveFeedback">保存评价</button>
-<button class="secondary" id="favorite">♡ 收藏这组</button>
-</div>
-<div class="muted" id="learnTip" style="margin-top:9px">你的评价会保存在这台设备里；随机生成时会轻微参考你满意过的题材。文字意见可以之后一键整理给 ChatGPT。</div>
+<div class="rating"><button class="rate good" data-rating="满意">😍 满意</button><button class="rate mid" data-rating="一般">😐 一般</button><button class="rate bad" data-rating="不满意">😖 不满意</button></div>
+<div class="field" style="margin-top:10px"><textarea id="feedback" placeholder="哪里香、哪里怪、哪句像AI、职业不对、冲突很好……"></textarea></div>
+<div class="actions"><button class="secondary" id="saveFeedback">保存评价</button><button class="secondary" id="favorite">♡ 收藏这组</button></div>
 </div>
 
 <div class="panel">
 <div class="sectionTitle">名场面点播机</div>
 <div class="sceneChips" id="sceneChips"></div>
-<div class="field" style="margin-top:10px"><div class="inline"><input id="customScene" placeholder="或者自己写：雨夜去接他 / 前任出现 / 同学聚会"><button class="mini" id="makeCustomScene">写这一幕</button></div></div>
-<div id="sceneOutput" class="hidden" style="margin-top:11px">
-<div class="chapter prose" id="sceneText"></div>
-<div class="actions"><button class="secondary" id="addTimeline">📌 加入时间线</button><button class="secondary" id="copyScene">📋 复制这一幕</button></div>
-</div>
+<div class="field" style="margin-top:10px"><div class="inline"><input id="customScene" placeholder="自己写：发现受只当工作 / 愤怒分手 / 第一次追妻失败"><button class="mini" id="makeCustomScene">写这一幕</button></div></div>
+<div id="sceneOutput" class="hidden" style="margin-top:11px"><div class="chapter prose" id="sceneText"></div><div class="actions"><button class="secondary" id="addTimeline">📌 加入时间线</button><button class="secondary" id="copyScene">📋 复制这一幕</button></div></div>
 </div>
 
-<div class="panel">
-<div class="sectionTitle">这对 / 这群人的时间线</div>
-<div id="timeline"></div>
-</div>
+<div class="panel"><div class="sectionTitle">时间线</div><div id="timeline"></div></div>
 </section>
 </div>
 
 <div id="libraryView" class="hidden">
 <section class="panel">
 <div class="sectionTitle">我的故事库</div>
-<div class="actions">
-<button class="secondary" id="showFav">❤️ 只看收藏</button>
-<button class="secondary" id="exportFeedback">📦 复制近期反馈给 ChatGPT</button>
-</div>
+<div class="actions"><button class="secondary" id="showFav">❤️ 只看收藏</button><button class="secondary" id="exportFeedback">📦 复制近期反馈给 ChatGPT</button></div>
 <div id="libraryList"></div>
 </section>
 </div>
@@ -170,421 +145,431 @@ details summary{cursor:pointer;font-weight:750}.settings{margin-top:12px;display
 <div class="toast" id="toast"></div>
 
 <script>
-const BASE_GENRES=["随机","大学校园","都市职场","高干 / 家族","悬疑危险","娱乐圈","电竞","刑侦","竹马 / 发小","破镜重圆开局","古代架空","轻幻想"];
-const GENRE_DATA={
-"大学校园":{ids:["法学院学生","建筑系学生","医学院学生","新闻系学生","计算机系学生","校辩论队主力","研究生助教","学生会干部"],events:["酒吧后门替室友取落下的手机","校辩论赛临时换队友","暴雨封校时借同一把伞","凌晨自习室因为一台充电器起争执","社团活动结束后被反锁在礼堂后台"]},
-"都市职场":{ids:["青年律师","记者","品牌策划","投行分析师","建筑师","纪录片摄影师","创业公司合伙人","游戏主策"],events:["客户临时爽约后在酒店酒吧拼桌","同一场发布会上拿错了工作证","凌晨加班时遇到整栋楼停电","航班延误被安排到同一辆接驳车","替共同朋友处理一次突发事故"]},
-"高干 / 家族":{ids:["家族企业继承人","私人基金经理","青年律师","建筑事务所合伙人","艺术基金会负责人","创业公司创始人","政商家庭二代","品牌主理人"],events:["一场长辈安排的饭局临时换了座位","慈善晚宴后台误拿了对方的外套","替家里处理同一桩旧宅产权纠纷","朋友婚礼上被迫坐同一桌","在私人会所替共同朋友解围"]},
-"悬疑危险":{ids:["调查记者","法医助理","私人调查员","安保顾问","刑侦顾问","律师","纪录片摄影师","酒吧老板"],events:["酒吧后巷撞见一场冲突","凌晨去医院认领同一个伤者","拿错了装着关键资料的文件袋","一场采访结束后发现车被人动过","共同朋友失联后各自收到同一条短信"]},
-"娱乐圈":{ids:["新锐演员","经纪人","编剧","摄影师","唱作人","制片人","舞台导演","时尚编辑"],events:["颁奖礼后台临时共用一间休息室","拍摄现场因为替身缺席被迫搭戏","红毯前十分钟发现拿错了造型箱","深夜收工后在便利店认出对方","朋友的庆功宴上替对方挡了一杯酒"]},
-"电竞":{ids:["职业选手","战队数据分析师","教练","赛事解说","游戏主播","俱乐部经理","青训选手","游戏策划"],events:["排位赛里吵了一整局才发现坐在隔壁","线下赛后台拿错了外设包","临时缺人被拉进同一支表演赛队伍","凌晨训练室只剩他们两个人","直播事故后被迫一起做澄清"]},
-"刑侦":{ids:["刑警","法医","律师","记者","心理顾问","技侦人员","检察官助理","私人调查员"],events:["同一案件现场第一次碰面就意见不合","凌晨审讯结束后一起被困在停车场","因为一份错误送达的卷宗产生联系","医院走廊里同时等一名关键证人醒来","追同一条线索时在旧城区撞见"]},
-"竹马 / 发小":{ids:["研究生","青年律师","医生","建筑师","创业者","摄影师","教师","自由职业者"],events:["多年后回老家参加同一个人的婚礼","帮父母搬家时翻出一盒旧照片","春节被两家长辈安排一起去买东西","其中一人临时借住进另一人的空房","高中同学群突然有人发出他们旧照"]},
-"破镜重圆开局":{ids:["青年律师","医生","演员","记者","建筑师","创业者","摄影师","大学教师"],events:["分开三年后在共同朋友婚礼重逢","租房合同出了问题才发现房东是前任","公司并购项目的对方负责人是旧爱","急诊室里认出陪病人来的那个人","机场广播延误后在同一排座位坐下"]},
-"古代架空":{ids:["世家公子","年轻将领","太医","御史","商行少东家","书院先生","暗卫统领","画师"],events:["上元灯会误拿了同一盏灯","雨夜避进同一间废寺","替朋友送信却送到了对方手里","宴席散后在宫门外共等一辆马车","一桩旧案让两家的人被迫同行"]},
-"轻幻想":{ids:["异能研究员","城市异常调查员","梦境记录师","特殊事务律师","古籍修复师","灵感摄影师","研究所观察员","秘密组织联络人"],events:["同一天重复做了同一个梦","在只有他们能看见的地铁站相遇","一件旧物同时出现在两个人家里","为了处理同一场异常被临时绑定","其中一人突然开始听见另一个人的梦话"]}
-};
-const RANDOM_IDS=["律师","医生","摄影师","记者","研究生","建筑师","音乐人","策展人","创业者","教师","设计师","酒吧老板"];
-const ATK_TRAITS=["控场感强","情绪稳定","锋利直接","表面温和但主意很正","行动力强","看着散漫其实很有秩序","很少示弱","会照顾场面但不爱解释自己"];
-const REC_TRAITS=["冷淡但有自己的执拗","反应快、嘴很利","看起来好说话其实边界很重","情绪不外露","敏感但不轻易示弱","很会观察人","有点阴郁但判断清醒","懒得社交却很会看穿别人"];
-const FAMILIES=["父母常年异地工作，从高中起就习惯自己处理生活","家里关系不错，但人人都忙，很少认真聊彼此的事","父母早年分开，他跟其中一方联系很淡","家里做生意，物质宽裕，很多决定却从小被安排","普通工薪家庭，父母对他要求不高，他反而对自己要求很高","跟外婆长大，成年后才重新和父母住近","家里兄弟姐妹多，他很早就学会不抢话也不示弱","独生子，家里很安静，习惯把自己的事自己消化"];
-const HABITS=["手机常年静音，重要的人会单独设提醒","不爱吃早餐，但会记得别人喝什么咖啡","桌面看着乱，任何东西的位置他都记得","生气时反而说话更慢","习惯提前十分钟到，最讨厌别人临时改计划","喝酒不上脸，越喝越安静","记人靠细节，第二次见面就会记得对方上次穿什么","不喜欢发语音，除非真的懒得打字"];
-const FLAWS=["记仇，而且记得很久","遇到真正重要的事反而不愿意开口","控制欲比自己承认的更强","太相信自己的判断，很难被劝","不擅长求助，宁愿把事情拖到很糟","嘴硬，知道错了也不会第一时间道歉","对亲近的人要求反而更高","一旦觉得关系失控就会先撤"];
-const SCENES=["第一次心动","吃醋","暧昧失控","第一次接吻","告白","确认关系","争吵","冷战","分手","久别重逢","破镜重圆","朋友面前露馅","生病瞒着对方","凌晨四点的一通电话","多年以后"];
-const FIRST_LINES=[
-"门被推开的时候，外面的雨声跟着灌进来。",
-"凌晨一点十七分，手机第二次震动时，他才低头看了一眼。",
-"那天原本没有任何值得记住的地方，直到有人叫错了他的名字。",
-"所有人都散得差不多了，走廊尽头只剩一盏灯还亮着。",
-"他后来想过很多次，如果那晚早五分钟离开，事情大概会完全不同。"
-];
-
 const $=id=>document.getElementById(id);
 const pick=a=>a[Math.floor(Math.random()*a.length)];
 const rand=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k)||JSON.stringify(d))}catch{return d}};
 const save=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 const toast=t=>{const x=$("toast");x.textContent=t;x.style.display="block";setTimeout(()=>x.style.display="none",1700)};
 
-let current=null, selectedRating="", currentScene="", locked=new Set();
+const GENRES={
+"大学校园":{atk:["法学院学生","建筑系学生","医学院学生","校辩论队主力","研究生"],rec:["法学院学生","新闻系学生","美术系学生","研究生","学生会干部"],hooks:["社团活动临时收尾","凌晨自习室停电","共同朋友生日局","跨院比赛临时组队"]},
+"都市职场":{atk:["青年律师","投资经理","建筑师","创业公司合伙人","品牌主理人"],rec:["记者","设计师","策划","摄影师","青年律师"],hooks:["同一个项目出了临时事故","航班延误","共同客户突然失联","一场加班后的饭局"]},
+"娱乐圈":{atk:["影视投资人","经纪公司老板","制片人","导演","演员"],rec:["演员","唱作人","编剧","摄影师","时尚编辑"],hooks:["同一部戏正式开机","一次品牌晚宴","临时补拍","颁奖礼后台","深夜收工"]},
+"高干 / 家族":{atk:["家族企业继承人","投资人","青年律师","建筑事务所合伙人","基金经理"],rec:["品牌主理人","律师","大学教师","记者","艺术从业者"],hooks:["长辈饭局","共同朋友婚礼","旧宅产权纠纷","慈善晚宴"]},
+"悬疑危险":{atk:["刑侦顾问","安保顾问","律师","调查记者","私人调查员"],rec:["记者","法医","律师","摄影师","私人调查员"],hooks:["共同朋友失联","医院认领同一个伤者","一份拿错的文件袋","旧城区追同一条线索"]},
+"电竞":{atk:["职业选手","教练","战队经理","游戏主播","数据分析师"],rec:["职业选手","赛事解说","游戏策划","数据分析师","青训选手"],hooks:["线下赛后台拿错外设","排位赛吵了一整局","临时表演赛缺人","直播事故"]},
+"刑侦":{atk:["刑警","检察官","律师","技侦人员","法医"],rec:["法医","记者","律师","心理顾问","私人调查员"],hooks:["同一案件现场","凌晨审讯结束","关键证人醒来前","卷宗送错"]},
+"竹马 / 发小":{atk:["青年律师","医生","建筑师","创业者","教师"],rec:["研究生","摄影师","教师","设计师","演员"],hooks:["多年后共同朋友婚礼","春节回老家","旧房搬家","高中同学聚会"]},
+"破镜重圆开局":{atk:["青年律师","医生","投资人","演员","建筑师"],rec:["演员","记者","摄影师","教师","设计师"],hooks:["分开三年后婚礼重逢","公司项目再合作","机场延误","急诊室重逢"]},
+"古代架空":{atk:["年轻将领","世家公子","御史","商行少东家","暗卫统领"],rec:["太医","书院先生","画师","世家公子","商行掌柜"],hooks:["上元灯会","雨夜废寺","一桩旧案","宫宴散场"]},
+"轻幻想":{atk:["异常调查员","特殊事务律师","研究员","秘密组织联络人"],rec:["梦境记录师","古籍修复师","研究员","灵感摄影师"],hooks:["重复做了同一个梦","只对他们开放的地铁站","一件重复出现的旧物","一次异常事件"]},
+"哨向":{atk:["S级哨兵·特勤行动队","A级哨兵·边境作战组","哨兵教官","自由哨兵"],rec:["S级向导·精神疏导科","A级向导·中央塔","向导医师","自由向导"],hooks:["任务后紧急精神疏导","匹配测试意外高契合","一次精神失控事件","临时搭档任务"],world:"塔制哨向世界。哨兵拥有强化感官并可能出现感官过载，向导可进行精神疏导；存在等级、精神体、精神链接和搭档制度。"},
+"ABO":{atk:["Alpha投资人","Alpha医生","Alpha律师","Alpha演员"],rec:["Omega演员","Omega设计师","Beta记者","Omega研究生"],hooks:["抑制剂失效后的意外相遇","合作项目","共同朋友聚会","临时标记事故"],world:"ABO世界，有Alpha/Beta/Omega第二性别、信息素与抑制剂等设定。"},
+"无限流":{atk:["资深玩家","副本调查员","积分榜高位玩家","新人玩家"],rec:["新人玩家","资深玩家","情报贩子","副本NPC异常者"],hooks:["第一次进入同一副本","必须两人合作的规则","安全屋只剩一个名额","共同触发隐藏任务"],world:"无限流副本世界，存在规则、任务、积分与生存条件。"}
+};
+const ATK_TRAITS=["控场感强，习惯先处理问题再谈情绪","表面温和，真正做决定时很难被改变","很少示弱，对失控尤其敏感","嘴上不留情，做事却比说话可靠","自负，习惯别人适应自己的节奏","看似散漫，实际对边界和秩序要求很高"];
+const REC_TRAITS=["清醒，很少把希望压在别人身上","冷淡，熟了以后反而话不少","敏感但不轻易示弱，判断人很快","看起来好说话，真正的边界却很硬","有点阴郁，情绪不外露但记性很好","懒得解释自己，遇到重要的事反而非常固执"];
+const FAMILIES=["父母常年异地工作，他从高中起就习惯自己安排生活","家里做生意，物质宽裕，很多决定却从小有人替他安排","父母早年分开，他和其中一方联系一直很淡","普通工薪家庭，家里关系稳定，他反而很早就想搬出去自己住","跟外婆长大，成年后才慢慢和父母恢复来往","家里兄弟姐妹多，他很早就学会自己解决麻烦"];
+const HABITS=["手机常年静音，但会给少数联系人单独开提醒","不吃早餐，下午却一定会买一杯固定口味的咖啡","记性很好，别人随口说过的小事隔几个月还能翻出来","桌面看着乱，别人动过什么他一眼就能看出来","生气时语速会变慢，越不耐烦反而越客气","睡得很浅，凌晨的消息几乎都能看到"];
+const FLAWS=["知道自己不占理时也很难第一时间道歉","关系一旦让他觉得失控，就会先把人推开","太相信自己的判断，常常把别人的解释听成借口","不擅长求助，事情拖到很糟才会让别人知道","对真正亲近的人要求反而更高","很会记旧账，只是平时不说"];
+const SPIRITS=["黑豹","雪豹","苍鹰","灰狼","雪鸮","赤狐","白鹿","虎鲸","渡鸦","黑曼巴"];
+const DEFAULT_SCENES=["第一次心动","吃醋","暧昧失控","第一次接吻","告白","确认关系","争吵","冷战","分手","久别重逢","破镜重圆","第一次低头","朋友面前露馅","凌晨四点的一通电话","多年以后"];
+let current=null,locked=new Set(),selectedRating="",currentScene=null;
 
-function allGenres(){return [...BASE_GENRES.filter(x=>x!=="随机"),...load("storyloomCustomGenres",[])];}
-function renderGenreOptions(){
+function customRecords(){
+ const r=load("storyloomCustomGenreRecords",[]);
+ const legacy=load("storyloomCustomGenres",[]);
+ const out=Array.isArray(r)?r:[];
+ if(Array.isArray(legacy))legacy.forEach(x=>{if(typeof x==="string"&&!out.some(y=>y.name===x))out.push({name:x,world:""})});
+ return out;
+}
+function allGenres(){return [...Object.keys(GENRES),...customRecords().map(x=>x.name).filter(x=>!GENRES[x])]}
+function renderGenres(){
  const prev=$("genre").value;
- $("genre").innerHTML='<option>随机</option>'+allGenres().map(x=>'<option>'+escapeHtml(x)+'</option>').join("");
+ $("genre").innerHTML='<option>随机</option>'+allGenres().map(x=>'<option>'+esc(x)+'</option>').join("");
  if([...$("genre").options].some(o=>o.value===prev))$("genre").value=prev;
+ syncWorld();
 }
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));}
-function updateModeUI(){$("countField").style.display=$("mode").value==="1v1"?"none":"block";}
-function rememberPersona(){
- const a=$("atkPersona").value.trim(),r=$("recPersona").value.trim();
- if(a){let x=load("storyloomAtk",[]);if(!x.includes(a)){x.unshift(a);save("storyloomAtk",x.slice(0,12));}}
- if(r){let x=load("storyloomRec",[]);if(!x.includes(r)){x.unshift(r);save("storyloomRec",x.slice(0,12));}}
- renderDatalists();
+function syncWorld(){
+ const g=$("genre").value;
+ if(GENRES[g]?.world){$("worldNote").value=GENRES[g].world;$("worldNote").disabled=true}
+ else{$("worldNote").disabled=false;const r=customRecords().find(x=>x.name===g);$("worldNote").value=r?.world||""}
 }
-function renderDatalists(){
- $("atkList").innerHTML=load("storyloomAtk",[]).map(x=>'<option value="'+escapeHtml(x)+'">').join("");
- $("recList").innerHTML=load("storyloomRec",[]).map(x=>'<option value="'+escapeHtml(x)+'">').join("");
-}
+function updateModeUI(){$("countField").style.display=$("mode").value==="1v1"?"none":"block"}
 function learnedGenre(){
- const stories=load("storyloomStories",[]);
- const good=stories.filter(s=>s.rating==="满意"&&s.genre&&s.genre!=="随机");
+ const good=load("storyloomStories",[]).filter(s=>s.rating==="满意"&&s.genre&&GENRES[s.genre]);
  if(!good.length)return null;
- const counts={};good.forEach(s=>counts[s.genre]=(counts[s.genre]||0)+1);
- const weighted=[];Object.keys(counts).forEach(k=>{for(let i=0;i<counts[k];i++)weighted.push(k)});
- return pick(weighted);
+ const c={};good.forEach(s=>c[s.genre]=(c[s.genre]||0)+1);const bag=[];Object.keys(c).forEach(k=>{for(let i=0;i<c[k];i++)bag.push(k)});return pick(bag)
 }
 function chosenGenre(){
- const g=$("genre").value;
- if(g!=="随机")return g;
- const surprise=+$("surprise").value;
- if(Math.random()*100>surprise){const lg=learnedGenre();if(lg)return lg;}
- return pick(allGenres());
+ const g=$("genre").value;if(g!=="随机")return g;
+ const surprise=+$("surprise").value;if(Math.random()*100>surprise){const lg=learnedGenre();if(lg)return lg}
+ return pick(allGenres())
 }
-function dataForGenre(g){
- if(GENRE_DATA[g])return GENRE_DATA[g];
- return {ids:RANDOM_IDS,events:["朋友临时组的饭局上坐到了一起","深夜便利店因为最后一把伞说上话","共同朋友喝醉后把两个人同时叫来","机场延误时被安排在同一排座位","一场临时取消的活动让他们一起滞留"]};
+function genreData(g){
+ if(GENRES[g])return GENRES[g];
+ const rec=customRecords().find(x=>x.name===g);
+ return {atk:["核心人物","掌权者","专业人士","自由职业者"],rec:["核心人物","专业人士","学生","自由职业者"],hooks:["一次临时合作","共同朋友牵线","一场意外","一次不得不见面的安排"],world:rec?.world||""}
+}
+function inferFromPlot(plot,role){
+ let id="";
+ if(role==="受"){
+   if(/受.{0,6}(演员|艺人)/.test(plot))id="演员";
+   else if(/受.{0,6}向导/.test(plot))id="向导";
+   else if(/受.{0,6}(学生|法学生|研究生)/.test(plot))id=RegExp.$1;
+ }
+ if(role==="攻"){
+   if(/攻.{0,8}(金主|投资人)/.test(plot))id=RegExp.$1;
+   else if(/攻.{0,8}哨兵/.test(plot))id="哨兵";
+   else if(/攻.{0,8}(老板|导演|律师|医生)/.test(plot))id=RegExp.$1;
+ }
+ return id
 }
 function namePool(){
- const surn=["沈","裴","梁","周","贺","闻","程","谢","郁","季","陆","祁","温","许","江","顾","林","韩","陈","霍","宋","秦","纪","邵","唐","苏"];
- const given=["既明","予安","庭川","行舟","知遥","景澄","惟深","照临","柏言","明彻","序白","砚川","越衡","怀序","迟野","临川","闻洲","景行","言川","叙白","松隐","时屿","承砚","昭野","泊川","谨言"];
- return pick(surn)+pick(given);
+ const s=["沈","裴","梁","周","贺","闻","程","谢","郁","季","陆","祁","温","许","江","顾","林","韩","陈","霍","宋","秦","纪","邵","唐","苏"];
+ const n=["既明","予安","庭川","行舟","知遥","景澄","惟深","照临","柏言","明彻","序白","砚川","越衡","怀序","迟野","临川","闻洲","景行","言川","时屿","承砚","昭野","泊川","谨言","闻砚","叙川"];
+ return pick(s)+pick(n)
 }
-function usedNames(){return load("storyloomStories",[]).flatMap(s=>(s.people||[]).map(p=>p.name)).slice(0,120);}
-function uniqueName(){
- const u=usedNames();for(let i=0;i<80;i++){const n=namePool();if(!u.includes(n))return n}return namePool();
-}
+function usedNames(){return load("storyloomStories",[]).flatMap(s=>(s.people||[]).map(p=>p.name)).slice(0,140)}
+function uniqueName(){const u=usedNames();for(let i=0;i<80;i++){const n=namePool();if(!u.includes(n))return n}return namePool()}
 function rolePlan(){
- const mode=$("mode").value,count=+$("multiCount").value;
- if(mode==="1v1")return ["攻","受"];
- if(mode==="multiA")return ["受",...Array(count).fill("攻")];
- return ["攻",...Array(count).fill("受")];
+ const m=$("mode").value,n=+$("multiCount").value;if(m==="1v1")return ["攻","受"];if(m==="multiA")return ["受",...Array(n).fill("攻")];return ["攻",...Array(n).fill("受")]
 }
-function ageFor(role,index,base){
+function ageFor(role,base){
  const g=$("ageGap").value;
  if(g==="同龄 / ±1")return base+rand(-1,1);
  if(g==="攻年上 2–5 岁")return role==="攻"?base+rand(2,5):base;
  if(g==="攻年上 6–10 岁")return role==="攻"?base+rand(6,10):base;
  if(g==="受年上 2–5 岁")return role==="受"?base+rand(2,5):base;
- return Math.max(18,base+rand(-3,5)+(index?rand(-1,2):0));
+ return Math.max(18,base+rand(-2,5))
 }
-function buildPerson(role,index,g,old){
+function buildPerson(role,g,old){
  if(old)return old;
- const data=dataForGenre(g), custom=role==="攻"?$("atkPersona").value.trim():$("recPersona").value.trim();
- const trait=custom||pick(role==="攻"?ATK_TRAITS:REC_TRAITS);
- const age=ageFor(role,index,rand(20,25));
- return {id:uid(),role,name:uniqueName(),age,identity:pick(data.ids),trait,family:pick(FAMILIES),habit:pick(HABITS),flaw:pick(FLAWS)};
+ const data=genreData(g),plot=$("customPlot").value.trim();
+ const hard=role==="攻"?$("atkIdentity").value.trim():$("recIdentity").value.trim();
+ const inferred=inferFromPlot(plot,role);
+ let identity=hard||inferred||pick(role==="攻"?data.atk:data.rec);
+ const trait=(role==="攻"?$("atkPersona").value.trim():$("recPersona").value.trim())||pick(role==="攻"?ATK_TRAITS:REC_TRAITS);
+ const p={id:uid(),role,name:uniqueName(),age:ageFor(role,rand(20,25)),identity,trait,family:pick(FAMILIES),habit:pick(HABITS),flaw:pick(FLAWS)};
+ if(g==="哨向"||/哨兵|向导/.test(identity)){p.spirit=pick(SPIRITS);p.rank=/S级/.test(identity)?"S级":/A级/.test(identity)?"A级":pick(["A级","B级","S级"])}
+ return p
 }
-function profileText(p){
- return p.name+"，"+p.age+"岁，"+p.identity+"。"+p.family+"。平时"+p.habit+"。"+p.trait+"。真遇上自己在意的事时，"+p.flaw+"。";
+function profileText(p,g){
+ let x=p.family+"。平时"+p.habit+"。"+p.trait+"。真遇到关系失控时，"+p.flaw+"。";
+ if(g==="哨向"||p.spirit)x="精神体是"+(p.spirit||pick(SPIRITS))+"，"+(p.rank||"A级")+"。"+x;
+ return x
 }
-function sceneKit(meeting,g){
- const s=meeting||"一次临时碰面";
- if(/酒吧|庆功宴|饭局|会所/.test(s))return {place:"靠近后门的窄走廊",prop:"一部落下的手机",sound:"门里低低的音乐声和玻璃杯碰在一起的响动",delay:"前台说失物登记的人还要十分钟才回来"};
- if(/婚礼|晚宴|颁奖|红毯/.test(s))return {place:"酒店宴会厅外的长廊",prop:"一张压在托盘下面的房卡套",sound:"宴会厅里断断续续的掌声",delay:"工作人员正在清场，他们暂时进不去"};
- if(/机场|航班|接驳/.test(s))return {place:"登机口最里面一排空座旁",prop:"一张被拿错的登机牌",sound:"广播反复播着延误通知",delay:"新的登机时间还没出来"};
- if(/医院|急诊|伤者|证人/.test(s))return {place:"急诊楼二层的自动贩卖机旁",prop:"一只装着检查单的牛皮纸袋",sound:"推床轮子碾过地砖的声音",delay:"护士让他们再等二十分钟"};
- if(/自习室|礼堂|辩论|封校|社团/.test(s))return {place:"教学楼侧门的屋檐下",prop:"一张临时门禁卡",sound:"雨点密密砸在金属遮雨棚上",delay:"值班老师去另一栋楼了，一时半会儿回不来"};
- if(/拍摄|替身|造型|收工|片场/.test(s))return {place:"摄影棚后面的化妆间门口",prop:"一页被折过角的剧本",sound:"场务在远处拖设备箱的轱辘声",delay:"下一场临时改景，所有人都被赶出来等"};
- if(/排位|线下赛|训练室|直播|外设/.test(s))return {place:"俱乐部训练室外的小休息区",prop:"一只贴错名字的外设包",sound:"隔音门里隐约传出的键盘声",delay:"管理员正在核对物品，他们只能等"};
- if(/案件|审讯|卷宗|线索|调查/.test(s))return {place:"停车场通往办公楼的安全通道",prop:"一个封口没贴牢的文件袋",sound:"楼上传来的脚步声和短促的电话铃",delay:"负责交接的人被临时叫走了"};
- if(/上元|废寺|送信|宫门|旧案/.test(s))return {place:"廊下避雨的石阶边",prop:"一封被雨气打潮的信",sound:"檐角水珠一串串落在青石上",delay:"前路封了，他们只能等雨势小些"};
- if(/梦|地铁|异常|旧物/.test(s))return {place:"末班地铁停运后的空站台",prop:"一张两个人手里都出现过的旧票",sound:"隧道深处很久才响一次的风声",delay:"出口的卷帘门莫名其妙落了下来"};
- return {place:"临街便利店外的塑料棚下",prop:"一把被拿错的黑伞",sound:"车轮压过积水的声音",delay:"共同朋友说至少还要二十分钟才到"};
+function plotFlags(plot){
+ return {patron:/金主|包养|情人|投资人/.test(plot),work:/只当工作|工作关系|不在意|没爱过/.test(plot),breakup:/分手|结束关系/.test(plot),chase:/追妻|追回|追人/.test(plot),reunion:/破镜重圆|重逢/.test(plot)}
 }
-
-function buildEvent(story){
- const meeting=story.meeting||pick(dataForGenre(story.genre).events), k=sceneKit(meeting,story.genre), ps=story.people;
- if(ps.length===2){
-   const a=ps[0],b=ps[1];
-   return "事情起在"+meeting+"。"+a.name+"赶到"+k.place+"时，"+b.name+"已经在那里了，手边正放着"+k.prop+"。"+
-   a.name+"本来只打算把东西拿走，"+b.name+"却告诉他："+k.delay+"。两个人只好留下来等。"+
-   "等人的二十来分钟里，他们先为"+k.prop+"到底是谁拿错的争了几句，后来又从共同认识的人聊到各自第二天的安排。"+
-   "分别前，"+b.name+"把自己的号码输进"+a.name+"手机里，说等事情处理完记得发一声。第二天上午，"+a.name+"真的收到了他的第二条消息。";
+function buildOutline(story){
+ const ps=story.people,a=ps.find(p=>p.role==="攻")||ps[0],b=ps.find(p=>p.role==="受")||ps[1],plot=story.customPlot||"",f=plotFlags(plot),g=story.genre;
+ if(f.patron&&f.work&&f.breakup&&f.chase){
+   return [
+    ["故事起点",b.name+"是"+b.identity+"，事业还没真正站稳时认识了"+a.name+"。两人很快把关系谈成了明码实价的长期关系：资源、陪伴、互不干涉私生活。"],
+    ["前期关系",a.name+"一直把自己放在更冷淡的位置。他觉得"+b.name+"多少对自己有感情，只是足够懂事，从不越界。"+b.name+"却真的把这段关系当工作：该出现时出现，该离开时从不多留。"],
+    ["第一次裂缝",a.name+"无意间听见"+b.name+"和经纪人谈合约到期后的安排。对话里没有他，甚至没有一句“以后怎么办”，只有一句很平静的“到时候应该就不会联系了”。"],
+    ["冲突爆发",a.name+"开始故意试探，临时取消见面、把资源抽走一部分、甚至问“如果现在结束呢”。他等着看"+b.name+"慌一次，结果"+b.name+"只问清楚收尾时间和住处怎么处理。"],
+    ["分手",a.name+"在愤怒里主动结束关系。第二天"+b.name+"就把留在他家的衣服、剧本和洗漱用品全部收走，连备用钥匙都装进信封放在玄关。"],
+    ["分开以后",b.name+"照常拍戏，事业甚至开始往上走。"+a.name+"第一次发现，钱、资源和身份都不能解释自己为什么频繁点开对方的新闻、为什么看到别人送花会烦。"],
+    ["追妻阶段",a.name+"重新靠近时，"+b.name+"已经不需要以前那套资源交换。追妻真正难的地方变成：没有合同、没有利益，"+b.name+"为什么还要再选他一次？"]
+   ]
  }
- const center=ps[0],others=ps.slice(1), names=others.map(x=>x.name);
- return "事情起在"+meeting+"。"+center.name+"到"+k.place+"的时候，"+names.join("、")+"已经先后到了。"+
- "几个人原本只是为了处理"+k.prop+"这件事，被"+k.delay+"硬生生留在原地。"+
- "等待期间有人打电话、有人去买水、有人把话题扯远，等负责的人回来时，他们已经把彼此的名字和联系方式都记住了。"+
- "第二天，这件小事又留下了一个没处理干净的尾巴，他们因此有了第二次见面的理由。";
+ const hook=pick(genreData(g).hooks);
+ const world=story.world?story.world+" ":"";
+ return [
+  ["故事起点",world+a.name+"和"+b.name+"因为"+hook+"有了第一次真正的交集。两人的身份和做事方式天然有摩擦，所以很快记住了对方。"],
+  ["继续见面",第一次见面留下了一件没处理完的事，他们因此有了第二次、第三次碰面的理由。关系不是靠“命中注定”，而是被一件件具体的小事往前推。"],
+  ["第一次变化",其中一人开始记住对方的习惯：时间、口味、工作安排，或者一句几天前随口说过的话。这个变化先落在行动上，谁都没急着给它命名。"],
+  ["中段矛盾",职业、立场或旧经历让两个人第一次真正吵起来。争执里翻出一个前面已经埋过的小细节，关系因此被迫往更深处走。"],
+  ["关系断裂",其中一人做出一个很难收回的决定：离开、拒绝合作、结束关系，或在最需要对方时没有出现。"],
+  ["后续",真正分开以后，人物各自继续生活。是否重逢、告白或复合，要从前面的选择里长出来，而不是突然发生。"]
+ ]
 }
-
+function dynamicScenes(story){
+ const f=plotFlags(story.customPlot||"");
+ if(f.patron&&f.work&&f.breakup&&f.chase)return ["发现受只当工作","第一次试探","愤怒分手","受真的搬走","分手后的第一次失控","受身边出现追求者","第一次追妻失败","攻第一次低头","破镜重圆","多年以后"];
+ return DEFAULT_SCENES
+}
 function buildChapter(story,variant){
- const ps=story.people;
- const pov=ps.find(p=>p.role==="受")||ps[0];
- const other=ps.find(p=>p.id!==pov.id)||ps[1];
- const meeting=story.meeting||pick(dataForGenre(story.genre).events);
- const k=sceneKit(meeting,story.genre);
- const more=ps.filter(p=>p.id!==pov.id&&p.id!==other.id).map(p=>p.name);
- const alt=(variant||0)%3;
- const opener=alt===1
-   ? k.sound+"。"+pov.name+"把手机从口袋里摸出来看了一眼，屏幕上还是没有新消息。"
-   : alt===2
-   ? pov.name+"找到"+k.place+"的时候，先看见了"+k.prop+"，然后才看见旁边的人。"
-   : k.sound+"。"+pov.name+"走到"+k.place+"时，"+other.name+"正低头看着"+k.prop+"。";
- const extra=more.length?"门外偶尔有人经过，其中还有"+more.join("、")+"，但没人进来。":"";
- return opener+"\n\n"+
- "“是这个？”"+pov.name+"朝"+k.prop+"抬了抬下巴。\n\n"+
- other.name+"把东西往他那边推了推。“你先别拿。刚才有人来问过，说登记还没做完。你现在带走，等会儿他们对不上记录，又得重新找人。”\n\n"+
- "“我只是来拿个东西，怎么还能赶上流程审批。”\n\n"+
- "“这已经是我替你问的第三个人了。”\n\n"+
- pov.name+"这才看他一眼。“我让你问了？”\n\n"+
- "“没有。”"+other.name+"把手机揣回去，“我站这儿闲着也是闲着。你要是不领情，就当我多管闲事。”\n\n"+
- "“你讲话一直这么客气？”\n\n"+
- "“看人。”\n\n"+
- "“那我待遇还挺特别。”\n\n"+
- "“你要这么理解，也行。”\n\n"+
- pov.name+"没接这句。他把外套拉链往上提了一点，转头看向另一边。"+k.delay+"。他本来还约了人吃宵夜，现在看来只能迟到。\n\n"+
- "手机震了一下。朋友问他到哪了。\n\n"+
- pov.name+"低头回消息：还没拿到，你们先吃。\n\n"+
- other.name+"扫见屏幕亮起，问：“有人等你？”\n\n"+
- "“嗯。”\n\n"+
- "“那你先走吧。我等登记的人回来，东西拿到以后让共同朋友转给你。”\n\n"+
- pov.name+"按灭手机。“你认识我朋友多久？”\n\n"+
- "“哪个？”\n\n"+
- "“叫你过来这个。”\n\n"+
- "“两年多。”"+other.name+"想了想，又补了一句，“不过他平时没这么会给人添麻烦。今天算超常发挥。”\n\n"+
- pov.name+"笑了一声。“那是因为你跟他不熟。”\n\n"+
- "“听起来你很有发言权。”\n\n"+
- "“大学四年，替他找过三次钱包，两次身份证，一次猫。”\n\n"+
- "“猫也能丢？”\n\n"+
- "“不是丢。他前任把猫抱走了，他喝多以后非说是失窃，让我陪他去报警。”\n\n"+
- other.name+"终于笑出来。“然后呢？”\n\n"+
- "“然后警察让他先醒酒。”\n\n"+
- "“你真陪他去了？”\n\n"+
- "“不然呢，我把一个喝多的人扔派出所门口？”\n\n"+
- "“看不出来。”\n\n"+
- "“看不出来什么？”\n\n"+
- "“你还挺有耐心。”\n\n"+
- pov.name+"转过头。“你见我不到半小时，已经开始给我下结论了？”\n\n"+
- "“不是结论。”"+other.name+"说得很慢，“只是发现你跟刚才看起来不太一样。”\n\n"+
- "“刚才我看起来什么样？”\n\n"+
- "“像拿到东西就会直接走，谁跟你说话都嫌耽误时间。”\n\n"+
- "“那你现在最好别跟我说话。”\n\n"+
- "“晚了。”\n\n"+
- "“什么晚了？”\n\n"+
- "“已经说这么多了。”\n\n"+
- pov.name+"盯着他两秒，没忍住又笑了一下。外面"+k.sound+"。有人从走廊尽头喊了一声，却不是叫他们。"+extra+"\n\n"+
- "等人的时间比想象中长。两个人后来又聊到附近哪家店难吃、共同朋友为什么总喜欢迟到，甚至争了半天手机导航到底该不该相信。"+
- pov.name+"中途看过两次时间，却都没真的走。\n\n"+
- "负责登记的人终于回来，把"+k.prop+"递给他。"+pov.name+"确认了一遍，正准备离开，"+other.name+"忽然叫住他。\n\n"+
- "“等一下。”\n\n"+
- "“又怎么了？”\n\n"+
- "“留个号码。”\n\n"+
- pov.name+"没动。“为什么？”\n\n"+
- "“今天这件事还有个后续。要是明天他们又来找，我懒得再通过第三个人传话。”\n\n"+
- "“你可以不管。”\n\n"+
- "“我都管到现在了。”"+other.name+"把手机解锁，递过来，“再多一步也没什么。”\n\n"+
- pov.name+"接过手机，在联系人那一栏输入自己的号码。写完名字时，他停了一下，抬头问：“你叫什么来着？”\n\n"+
- other.name+"看着他，像是被气笑了。“刚聊了快四十分钟。”\n\n"+
- "“所以？”\n\n"+
- "“"+other.name+"。”\n\n"+
- pov.name+"把名字补上，把手机还回去。“行，现在记住了。”";
+ const ps=story.people,pov=ps.find(p=>p.role==="受")||ps[0],other=ps.find(p=>p.id!==pov.id)||ps[1],f=plotFlags(story.customPlot||"");
+ if(f.patron&&f.work){
+   return pov.name+"收工已经快十二点。化妆间的人走得差不多，他卸完妆才看见手机上那条四十分钟前的消息。\n\n"+
+   other.name+"：结束以后过来。\n\n"+
+   没有称呼，也没问他今天几点收工。\n\n"+
+   pov.name+"盯着屏幕看了两秒，把手机扣回桌上。经纪人正好推门进来，手里还拿着明天的通告单。\n\n"+
+   "“你今晚还回酒店吗？”\n\n"+
+   "“不回。”\n\n"+
+   "“又过去？”经纪人把通告单递给他，“明早七点半化妆，你别折腾到太晚。”\n\n"+
+   pov.name+"低头扫了一眼时间表。“我知道。司机到了吗？”\n\n"+
+   "“楼下。”经纪人看了他一会儿，“你跟他到底怎么说的？下个月合同续不续？”\n\n"+
+   "“工作室的约续，别的到期再说。”\n\n"+
+   "“你倒分得清。”\n\n"+
+   "“本来就是两回事。”\n\n"+
+   "他说得太自然，经纪人反而没接上话。\n\n"+
+   "四十分钟后，"+pov.name+"进门时，"+other.name+"还在书房打电话。阿姨已经下班，餐桌上留着一份没动过的晚饭。\n\n"+
+   pov.name+"先去厨房倒水，喝到一半，书房的门开了。\n\n"+
+   "“怎么这么晚？”"+other.name+"把手机扔到沙发上，走过来时先看了他一眼，“不是说十点能结束？”\n\n"+
+   "“补了两个镜头。导演临时改戏。”\n\n"+
+   "“没吃饭？”\n\n"+
+   "“剧组吃过。”\n\n"+
+   other.name+"打开桌上的保温盒。“吃过还能瘦成这样？”\n\n"+
+   pov.name+"靠着餐桌笑了笑。“你现在还管演员体重？”\n\n"+
+   "“我投资的戏，下个月还有宣传照。”\n\n"+
+   "“那你去跟导演说，别跟我说。”\n\n"+
+   other.name+"抬眼看他。“你今晚脾气挺大。”\n\n"+
+   "“困而已。”\n\n"+
+   "“那去洗澡。”\n\n"+
+   pov.name+"没动，先把明天的通告单从包里拿出来放在桌上。“还有件事。下周三我可能来不了，临时加了一场外景。”\n\n"+
+   "“推掉。”\n\n"+
+   "“推不了。”\n\n"+
+   "“我让人跟剧组说。”\n\n"+
+   pov.name+"拧上水瓶盖。“不用。你这里又不是通告。”\n\n"+
+   "这句话说完，"+other.name+"安静了几秒。\n\n"+
+   "“你最近总在提醒我这个。”\n\n"+
+   "“提醒什么？”\n\n"+
+   "“提醒我你分得很清楚。”\n\n"+
+   pov.name+"想了一下，还是把话说完整：“因为本来就应该分清楚。你给资源，我按约定出现。剧组的工作是另一份工作，不能因为这边临时改时间就推掉那边。以前不是一直这么说的吗？”\n\n"+
+   other.name+"盯着他，神色一点点冷下来。“所以在你那里，我跟一份合同差不多？”\n\n"+
+   pov.name+"这才觉得这句话问得有点奇怪。\n\n"+
+   "“合同至少会写清楚截止日期。”他说，“我们这个还没写。”\n\n"+
+   "厨房里冰箱压缩机轻轻响了一声。\n\n"+
+   other.name+"没有接话。\n\n"+
+   pov.name+"把通告单折好重新塞回包里。“我先去洗澡。明早六点半要走，你不用等我吃早饭。”\n\n"+
+   "他走到走廊口，身后才传来一句：“你是不是从来没想过以后？”\n\n"+
+   pov.name+"停下来，回头看他。\n\n"+
+   "“想过。”\n\n"+
+   "“然后呢？”\n\n"+
+   "“等这部戏拍完，休息两周。年底要是能接到那个悬疑本，就进组；接不到就去上表演课。”\n\n"+
+   other.name+"看了他很久。“我问的是我们。”\n\n"+
+   pov.name+"这次是真的愣了一下。\n\n"+
+   "过了几秒，他才说：“你以前没让我规划过这个。”";
+ }
+ const hook=story.outline?.[0]?.[1]||"一次临时合作";
+ return pov.name+"第一次真正跟"+other.name+"坐下来聊天，是在一件本来很快就该结束的小事之后。\n\n"+
+ "那天他们已经来回处理了两个小时，事情还剩最后一个环节。"+pov.name+"把手机放到桌上，先问了个很实际的问题：“你明天几点开始？”\n\n"+
+ other.name+"看了眼日程。“九点。你呢？”\n\n"+
+ "“七点半。”\n\n"+
+ "“那你还不走？”\n\n"+
+ "“这句话应该我问你。刚才是谁说十分钟处理完？”\n\n"+
+ other.name+"笑了一下。“我也没想到对方能把一个文件版本弄错三次。你要是困，可以先回去，我留这儿收尾。”\n\n"+
+ "“不用。我走了以后明天还得听别人转述一遍，浪费时间。”\n\n"+
+ "“你很怕浪费时间？”\n\n"+
+ "“看浪费在谁身上。”\n\n"+
+ "“那我现在属于哪一类？”\n\n"+
+ pov.name+"抬头看他。“我们认识才多久，你已经开始给自己分类了？”\n\n"+
+ "“我只是想知道有没有拖累你。”\n\n"+
+ "“有一点。”\n\n"+
+ "“那你还挺诚实。”\n\n"+
+ "“你问的。”\n\n"+
+ "两个人说着说着，话题慢慢从眼前这件事绕到共同朋友，又绕到附近哪家店难吃、谁工作时最难相处。中间有人打过两次电话，"+pov.name+"出去接了一次，回来以后发现"+other.name+"顺手替他把桌上的东西收好了。\n\n"+
+ "“你动我东西了？”\n\n"+
+ "“怕服务员收走。”\n\n"+
+ "“你怎么知道哪个是我的？”\n\n"+
+ "“你刚才一直拿着那支笔敲桌子。”\n\n"+
+ pov.name+"低头看了看，没说谢谢，只把笔收进包里。\n\n"+
+ "等事情终于结束时已经过了十二点。两个人一起走到门口，"+other.name+"忽然问：“你打车还是有人接？”\n\n"+
+ "“打车。”\n\n"+
+ "“我顺路。”\n\n"+
+ "“你知道我住哪？”\n\n"+
+ "“不知道。”\n\n"+
+ "“那你怎么顺路？”\n\n"+
+ "“先上车再看顺不顺。”\n\n"+
+ pov.name+"站在门口看了他两秒，最后还是拉开副驾驶的门。\n\n"+
+ "车开出去十分钟，他们已经开始争导航到底该不该信。没人提刚才那两个小时，也没人急着把这次见面定义成什么。"
 }
-
-function specialLine(story){
- const a=story.people[0],b=story.people[1];
- return pick([
-   "后来有一次，"+b.name+"临时把见面时间改晚了两个小时。"+a.name+"在聊天框里打了半天字，最后只回了一个“行”，然后把自己原来的安排往后挪。",
-   a.name+"第一次去"+b.name+"住处时，发现自己的号码被单独设了铃声。"+b.name+"被问起，只说手机平时静音，怕漏掉急事。",
-   "有一回朋友拿了"+a.name+"桌上的充电器，被他当场要了回来。半小时后"+b.name+"顺手拿走同一个，他看见了，只问晚上记得带回来。",
-   b.name+"生病那次谁都没告诉。"+a.name+"是从一条只有两秒钟的语音里听出来的，当晚就去了他家。第二天朋友问起，他只说刚好顺路。"
- ]);
+function specialProfile(story,p){
+ if(story.genre==="哨向"||p.spirit)return "精神体："+p.spirit+"｜等级："+p.rank;
+ return ""
 }
-
 function buildStory(keepLocked){
- const g=chosenGenre(),roles=rolePlan(),old=current?current.people:[];
- const people=roles.map((role,i)=>buildPerson(role,i,g,keepLocked&&locked.has(i)?old[i]:null));
- const meeting=keepLocked&&current&&current.meeting?current.meeting:pick(dataForGenre(g).events);
- const s={id:current&&keepLocked?current.id:uid(),created:Date.now(),genre:g,mode:$("mode").value,ageGap:$("ageGap").value,heat:$("heat").value,people,meeting,locked:[],event:"",special:"",chapter:"",timeline:current&&keepLocked?(current.timeline||[]):[],rating:current&&keepLocked?current.rating:"",feedback:current&&keepLocked?current.feedback:"",favorite:current&&keepLocked?current.favorite:false};
- s.event=buildEvent(s);s.special=specialLine(s);s.chapter=buildChapter(s);return s;
+ const g=chosenGenre(),roles=rolePlan(),old=current?current.people:[],world=GENRES[g]?.world||customRecords().find(x=>x.name===g)?.world||$("worldNote").value.trim();
+ const people=roles.map((r,i)=>buildPerson(r,g,keepLocked&&locked.has(i)?old[i]:null));
+ const s={id:current&&keepLocked?current.id:uid(),created:Date.now(),genre:g,world,mode:$("mode").value,ageGap:$("ageGap").value,heat:$("heat").value,customPlot:$("customPlot").value.trim(),people,timeline:current&&keepLocked?(current.timeline||[]):[],rating:current&&keepLocked?current.rating:"",feedback:current&&keepLocked?current.feedback:"",favorite:current&&keepLocked?current.favorite:false};
+ s.outline=buildOutline(s);s.chapter=buildChapter(s);return s
 }
-function persistCurrent(){
- if(!current)return;
- let arr=load("storyloomStories",[]);const i=arr.findIndex(x=>x.id===current.id);
- if(i>=0)arr[i]=current;else arr.unshift(current);
- save("storyloomStories",arr.slice(0,40));
+function persist(){
+ if(!current)return;let arr=load("storyloomStories",[]),i=arr.findIndex(x=>x.id===current.id);if(i>=0)arr[i]=current;else arr.unshift(current);save("storyloomStories",arr.slice(0,50))
 }
 function renderStory(){
  if(!current)return;$("result").classList.remove("hidden");
- $("characters").innerHTML=current.people.map((p,i)=>'<div class="card"><div class="cardhead"><div><div class="role">'+p.role+' · '+p.identity+'</div><div class="name">'+p.name+'</div></div><button class="secondary lock '+(locked.has(i)?"on":"")+'" data-i="'+i+'">'+(locked.has(i)?"🔒 已锁定":"🔓 锁定")+'</button></div><div class="badges"><span>'+p.age+'岁</span><span>'+escapeHtml(p.trait)+'</span></div><div class="prose" style="margin-top:9px">'+escapeHtml(profileText(p))+'</div></div>').join("");
+ $("characters").innerHTML=current.people.map((p,i)=>{
+  const sp=specialProfile(current,p);
+  return '<div class="card"><div class="cardhead"><div><div class="role">'+esc(p.role)+' · '+esc(p.identity)+'</div><div class="name">'+esc(p.name)+'</div></div><button class="secondary lock '+(locked.has(i)?"on":"")+'" data-i="'+i+'">'+(locked.has(i)?"🔒 已锁定":"🔓 锁定")+'</button></div><div class="badges"><span>'+p.age+'岁</span><span>'+esc(p.trait)+'</span>'+(sp?'<span>'+esc(sp)+'</span>':'')+'</div><div class="prose" style="margin-top:9px">'+esc(profileText(p,current.genre))+'</div></div>'
+ }).join("");
  document.querySelectorAll(".lock").forEach(b=>b.onclick=()=>{const i=+b.dataset.i;locked.has(i)?locked.delete(i):locked.add(i);renderStory()});
- $("eventText").textContent=current.event+"\n\n"+current.special;
+ $("outline").innerHTML=(current.outline||[]).map(x=>'<div class="beat"><b>'+esc(x[0])+'</b><div class="prose">'+esc(x[1])+'</div></div>').join("");
  $("chapterText").textContent=current.chapter;
- selectedRating=current.rating||"";renderRating();
- $("feedback").value=current.feedback||"";
- $("favorite").textContent=current.favorite?"♥ 已收藏":"♡ 收藏这组";
- renderTimeline();renderLibrary();
+ selectedRating=current.rating||"";renderRating();$("feedback").value=current.feedback||"";$("favorite").textContent=current.favorite?"♥ 已收藏":"♡ 收藏这组";
+ renderSceneChips();renderTimeline();renderLibrary()
 }
 function renderRating(){document.querySelectorAll(".rate").forEach(b=>b.classList.toggle("on",b.dataset.rating===selectedRating))}
+function renderSceneChips(){
+ const list=current?dynamicScenes(current):DEFAULT_SCENES;
+ $("sceneChips").innerHTML=list.map(x=>'<button class="chip" data-scene="'+esc(x)+'">'+esc(x)+'</button>').join("");
+ document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>showScene(b.dataset.scene))
+}
 function makeScene(type){
- if(!current)return "";
- const ps=current.people,a=ps[0],b=ps[1],others=ps.slice(2).map(p=>p.name);
- const third=others.length?others[0]:"陈放";
- if(type==="分手"){
-   return "玄关的行李箱已经合上了，拉杆没有收回去。"+b.name+"站在餐桌旁，把那串用了两年的钥匙放到桌面上。\n\n"+
-   a.name+"看了一眼。“你非得今晚走？”\n\n"+
-   "“房子下午已经看好了。”\n\n"+
-   "“我问的是今晚。”\n\n"+
-   b.name+"把桌上没喝完的水拧紧。“明早八点有事，我不想六点起来收东西。”\n\n"+
-   "“所以你连什么时候看的房子都不用告诉我。”\n\n"+
-   "“告诉你做什么？让你帮我挑朝向？”\n\n"+
-   a.name+"被噎了一下，伸手把钥匙拿起来，又放下。“你能不能别每句话都这么说。”\n\n"+
-   "“我怎么说了？”\n\n"+
-   "“像我们现在谈的是搬家。”\n\n"+
-   b.name+"抬头看他。“那你想谈什么？”\n\n"+
-   "客厅里很安静。冰箱压缩机忽然启动，嗡的一声。"+a.name+"原本准备好的那几句话全卡住了。\n\n"+
-   "“上周那件事我已经解释过了。”\n\n"+
-   "“我知道。”\n\n"+
-   "“你不信？”\n\n"+
-   "“我信。”"+b.name+"说，“我也没因为那件事跟你分手。”\n\n"+
-   "“那是因为什么？”\n\n"+
-   b.name+"看了他一会儿。“你真的不知道？”\n\n"+
-   a.name+"没说话。\n\n"+
-   "“我过敏不能吃什么，你到现在记不全。去年我换工作，你是第三天才知道。你每次说忙，我都觉得没关系，反正我自己的事也能处理。时间久了我才发现，什么都能自己处理的人，好像也不太需要谈恋爱。”\n\n"+
-   "“你现在是在算旧账？”\n\n"+
-   "“对。”"+b.name+"很平静，“今天就算一次。以后不算了。”\n\n"+
-   a.name+"手里的钥匙硌进掌心。他想反驳，又发现每一件都是真的。\n\n"+
-   "“你搬出去以后呢？”\n\n"+
-   "“上班，吃饭，睡觉。”\n\n"+
-   "“我是问我们。”\n\n"+
-   b.name+"拉起行李箱。“我也是。”";
+ const ps=current.people,a=ps.find(p=>p.role==="攻")||ps[0],b=ps.find(p=>p.role==="受")||ps[1],f=plotFlags(current.customPlot||"");
+ if(type==="发现受只当工作"){
+  return a.name+"本来只是想找一份合同。\n\n"+
+  "书房里没有，他最后在客厅矮柜里翻到一个文件夹。最上面是"+b.name+"下个月的行程，后面夹着经纪公司的续约方案。\n\n"+
+  "他原本没打算看，偏偏一张便利贴掉了出来。\n\n"+
+  "上面写着：公寓月底退租；私人安排全部结束；之后尽量不再麻烦A那边。\n\n"+
+  a.name+"盯着“全部结束”四个字看了很久。\n\n"+
+  b.name+"回来的时候已经一点多，推门就看见他坐在客厅。\n\n"+
+  "“还没睡？”\n\n"+
+  a.name+"把那张便利贴放到桌上。“这是什么？”\n\n"+
+  b.name+"走近看了一眼，神色没什么变化。“经纪人列的行程。”\n\n"+
+  "“我问最后一条。”\n\n"+
+  "“月底以后？”"+b.name+"把外套搭到椅背上，“不是之前说过吗？项目差不多都收尾了。”\n\n"+
+  "“所以项目结束，你就准备跟我也一起结束？”\n\n"+
+  b.name+"终于抬头。“我们不是一直这样算的吗？”\n\n"+
+  "“一直哪样？”\n\n"+
+  "“你给我资源，我按你的时间过来。你不喜欢我问私事，我也没问过。现在资源合作快结束了，我把住处和工作重新安排一下，很正常。”\n\n"+
+  a.name+"一时没说话。\n\n"+
+  b.name+"看了他几秒，又问：“你是还有什么没结清吗？有的话你直接说。”\n\n"+
+  "这一句比前面所有话都更让人火大。\n\n"+
+  a.name+"把便利贴推回去。“在你这里，这半年就剩一个‘结清’？”\n\n"+
+  b.name+"明显愣了一下。\n\n"+
+  "“不然呢？”他说，“你以前也没说过还有别的。”";
  }
- if(type==="告白"){
-   return "车停在路边已经十几分钟，雨刮器偶尔扫一下前挡风玻璃。"+a.name+"送"+b.name+"回来，却一直没开中控锁。\n\n"+
-   b.name+"看了一眼时间。“还有事？”\n\n"+
-   "“有。”\n\n"+
-   "“那你说。”\n\n"+
-   a.name+"没说，先把暖风调低了一档。\n\n"+
-   b.name+"等了半分钟，笑了。“你把我扣在车里，就是为了研究空调？”\n\n"+
-   "“你能不能安静一会儿。”\n\n"+
-   "“我已经安静十分钟了。”\n\n"+
-   "“才三分钟。”\n\n"+
-   "“你还计时？”\n\n"+
-   a.name+"偏过头。“"+b.name+"，我最近是不是对你太好了？”\n\n"+
-   b.name+"一时没听懂。“你今天把我叫住，是准备跟我清算油费？”\n\n"+
-   "“我是认真问。”\n\n"+
-   "“那我也认真回答。一般。上周我让你帮我带咖啡，你还忘了。”\n\n"+
-   "“我后来给你送公司去了。”\n\n"+
-   "“晚上九点。”\n\n"+
-   "“因为我开完会才想起来。”\n\n"+
-   b.name+"看着他，忽然不说话了。\n\n"+
-   a.name+"把视线移回前挡风玻璃。“我以前不会记这些。你几点下班，喝什么，开会的时候有没有吃饭，跟谁出去……我现在全知道。你一整天不给我回消息，我还会觉得烦。”\n\n"+
-   b.name+"慢慢问：“所以？”\n\n"+
-   "“所以我想了很久。”"+a.name+"停了一下，“可能不是因为我最近变闲了。”\n\n"+
-   "雨刮器又扫过去一次。\n\n"+
-   b.name+"靠回座椅。“你这算告白？”\n\n"+
-   "“你要是不满意，我可以重说。”\n\n"+
-   "“别。”"+b.name+"终于笑了，“就这个吧。挺像你的。”";
+ if(type==="愤怒分手"){
+  return "真正把“结束”两个字说出来的人是"+a.name+"。\n\n"+
+  "那天"+b.name+"拍夜戏回来，鞋还没换完，就听见他说：“以后不用过来了。”\n\n"+
+  b.name+"手还扶着鞋柜。“从什么时候开始？”\n\n"+
+  "“什么？”\n\n"+
+  "“结束。今天算，还是这个月底算？”\n\n"+
+  a.name+"原本等的根本不是这个问题。\n\n"+
+  "“你就只想问这个？”\n\n"+
+  "“不然还要问什么？”"+b.name+"站直，把钥匙从口袋里拿出来，“公寓是你的，我东西这两天会搬走。剧组那边的投资跟我们私人关系分开吧，合同已经签了。”\n\n"+
+  a.name+"看着那串钥匙，火气一下顶上来。“你是不是早就等着这一天？”\n\n"+
+  b.name+"皱了皱眉。“我为什么要等？”\n\n"+
+  "“因为你根本不在意。”\n\n"+
+  "“你现在才发现？”\n\n"+
+  "房间里安静了几秒。\n\n"+
+  b.name+"像是觉得这句话太重，又补了一句：“我的意思是，我们一开始说好的就是这样。你不要恋爱，不要我管你，也不需要我有什么承诺。我照做了。现在你要结束，我也照做。”\n\n"+
+  a.name+"脸色一点点沉下来。“行。”\n\n"+
+  "“那我明天下午来收东西。”\n\n"+
+  "“不用。”\n\n"+
+  "“为什么？”\n\n"+
+  "“我让人给你送过去。”\n\n"+
+  b.name+"看了他一眼，最后只说：“也行。”\n\n"+
+  "第二天下午四点，所有东西真的被送到了酒店。连他忘在浴室的一把旧梳子都装在最上面。";
  }
- if(type==="破镜重圆"||type==="久别重逢"){
-   return "咖啡已经凉了，"+b.name+"才推门进来。他比约定时间晚了十二分钟，坐下第一句话却是：“路上堵。”\n\n"+
-   a.name+"看着他把外套搭到椅背上。“你以前迟到也这么说。”\n\n"+
-   "“那你以前不是照样等。”\n\n"+
-   "“现在也等了。”\n\n"+
-   b.name+"手上的动作停了一下。“所以你找我到底什么事？”\n\n"+
-   a.name+"把桌上的文件推过去。“共同朋友托我给你的。电子版他不放心，说里面有几页要你亲自签。”\n\n"+
-   "“让快递送就行。”\n\n"+
-   "“他说你最近换地址了。”\n\n"+
-   "“嗯。”\n\n"+
-   "“又搬？”\n\n"+
-   b.name+"抬眼。“你现在还管这个？”\n\n"+
-   a.name+"没接。他端起咖啡喝了一口，已经完全凉透。\n\n"+
-   b.name+"低头翻文件，翻到最后一页时忽然问：“你还是喝美式？”\n\n"+
-   "“你不也没换。”\n\n"+
-   "“我点的是茶。”\n\n"+
-   a.name+"看了眼他手边的杯子。\n\n"+
-   b.name+"笑了一下。“看吧。你也不是所有事都记得。”\n\n"+
-   "“我记得你胃不好以后不空腹喝咖啡。”\n\n"+
-   "这次换"+b.name+"安静。\n\n"+
-   "服务员过来问要不要续杯。"+a.name+"说不用，"+b.name+"却忽然说：“再坐一会儿吧。”\n\n"+
-   a.name+"看向他。\n\n"+
-   "“文件我还没看完。”"+b.name+"低头继续翻，“你别想多。”\n\n"+
-   "“我什么都没说。”\n\n"+
-   "“你以前也这样。”\n\n"+
-   "“哪样？”\n\n"+
-   b.name+"没回答，只把签字笔从他手边拿了过去。";
+ if(type==="第一次追妻失败"){
+  return a.name+"第一次主动去片场找"+b.name+"，提前两个小时让人订了餐车。\n\n"+
+  "工作人员都以为是品牌送的，直到助理把卡片递给"+b.name+"。\n\n"+
+  b.name+"看完，问：“谁送的？”\n\n"+
+  "“A总那边。”\n\n"+
+  "“哦。”\n\n"+
+  "助理等了一会儿。“没了？”\n\n"+
+  "“不然呢？”\n\n"+
+  "晚上收工，"+a.name+"的车还停在外面。"+b.name+"走过去敲了敲车窗。\n\n"+
+  a.name+"降下玻璃。“上车，我送你。”\n\n"+
+  "“不用，剧组有车。”\n\n"+
+  "“我等了你三个小时。”\n\n"+
+  b.name+"点头。“那挺辛苦的。”\n\n"+
+  a.name+"被这句堵得差点笑出来。“你故意的？”\n\n"+
+  "“没有。我只是没让你等。”\n\n"+
+  "“吃的你也没动。”\n\n"+
+  "“我今天要拍近景，不能吃那么咸。”\n\n"+
+  "“以前你最爱那家。”\n\n"+
+  "“以前也不是天天吃。”\n\n"+
+  a.name+"看着他，第一次发现自己以前记住的那些东西，原来根本不足以换一张重新开始的门票。\n\n"+
+  b.name+"把口罩往上拉了拉。“还有事吗？没事我走了，明天五点起。”\n\n"+
+  a.name+"终于问：“那我应该怎么做？”\n\n"+
+  b.name+"停了一下。\n\n"+
+  "“我不知道。”他说，“你以前没问过我这个。”";
  }
- if(type==="吃醋"){
-   return third+"第三次给"+b.name+"倒酒时，"+a.name+"终于把自己的杯子放下了。\n\n"+
-   "“他自己有手。”\n\n"+
-   third+"愣了一下，笑着说：“我就顺手。”\n\n"+
-   b.name+"看了"+a.name+"一眼。“你今天怎么这么多事？”\n\n"+
-   "“我提醒他一下。”\n\n"+
-   "“提醒什么？”\n\n"+
-   "“你不喝甜酒。”\n\n"+
-   b.name+"低头看了一眼杯子。“我什么时候跟你说过？”\n\n"+
-   "“上个月。”\n\n"+
-   "“上个月我跟你说的是太甜的鸡尾酒不喝。这个不是。”\n\n"+
-   a.name+"被堵得没话，过了两秒才说：“那你喝。”\n\n"+
-   b.name+"真的端起来喝了一口。\n\n"+
-   a.name+"脸色更难看了。\n\n"+
-   "等饭局散了，"+b.name+"在电梯里问：“你刚才到底怎么回事？”\n\n"+
-   "“没怎么。”\n\n"+
-   "“你再说一次没怎么，我就真信了。”\n\n"+
-   a.name+"盯着电梯数字。“他一直跟你说话。”\n\n"+
-   "“饭桌上不说话干什么？”\n\n"+
-   "“他还给你夹菜。”\n\n"+
-   "“公筷。”\n\n"+
-   "“重点是公筷？”\n\n"+
-   b.name+"终于偏过脸看他。“那重点是什么？”\n\n"+
-   "电梯叮地一声到了一楼。门开了，"+a.name+"却没出去。\n\n"+
-   "“算了。”他说。\n\n"+
-   b.name+"伸手按住开门键。“不算。你把话说完。”";
+ if(type==="攻第一次低头"){
+  return "那天没有礼物，也没有资源置换。\n\n"+
+  a.name+"在"+b.name+"酒店楼下等了一个多小时，只发了一条消息：有空下来十分钟，我想跟你道歉。\n\n"+
+  b.name+"下来以后没有上车，隔着半开的车窗问：“说吧。”\n\n"+
+  a.name+"第一次没从“我当时为什么那样做”开始解释。\n\n"+
+  "“那天是我故意说结束的。”\n\n"+
+  b.name+"没说话。\n\n"+
+  "“我以为你会拦一下。你没拦，我就更生气。”\n\n"+
+  "“所以呢？”\n\n"+
+  "“所以很难看。”"+a.name+"说，“我明知道我们一开始怎么约定的，后来自己变了，又因为你没跟着一起变就发火。这个是我的问题。”\n\n"+
+  b.name+"站在路灯下面，听完才问：“你现在说这些，是想让我回去？”\n\n"+
+  "“想。”\n\n"+
+  "“那我不回呢？”\n\n"+
+  a.name+"停了停。“那就不回。我还能继续追。”\n\n"+
+  b.name+"终于笑了一下。“你现在倒挺会给自己安排工作。”\n\n"+
+  "“学你的。”\n\n"+
+  "“别。我工作效率比你高。”";
  }
- const place=pick(["楼下便利店","停车场出口","厨房水池旁","酒店走廊","深夜空着的客厅"]);
- return place+"的灯亮得有点过分。"+b.name+"把手里的东西放下，先问：“你今天是不是有什么话想说？”\n\n"+
- a.name+"没有马上回答。“为什么这么问？”\n\n"+
- "“因为你已经绕了二十分钟。”\n\n"+
+ if(type==="分手")return makeScene("愤怒分手");
+ if(type==="破镜重圆"){
+  return "重逢以后第三次见面，他们终于没再聊工作。\n\n"+b.name+"把菜单合上，问：“你今天到底为什么约我？”\n\n"+
+  a.name+"没有再绕。“想见你。”\n\n"+
+  "“上次你说是谈项目。”\n\n"+
+  "“那次也想见你，只是顺便谈项目。”\n\n"+
+  "“你现在说话越来越不讲究体面了。”\n\n"+
+  "“以前太讲究，结果更难看。”\n\n"+
+  b.name+"低头笑了一下，没有马上给答案。服务员来加水，他们等人走了以后，又把话题接了回去。\n\n"+
+  "这一次谁都没急着把关系定成什么，至少先把以前没说过的话一件件说完。";
+ }
+ const place=pick(["停车场出口","酒店走廊","楼下便利店","深夜空着的客厅"]);
+ return place+"里只剩他们两个人。\n\n"+b.name+"先把手里的东西放下：“你今天找我，不会只是为了这件事吧？”\n\n"+
+ a.name+"靠在桌边，没有立刻回答。“为什么这么想？”\n\n"+
+ "“因为这件事三句话能说完。你已经绕了半小时。”\n\n"+
  "“我是在想怎么说。”\n\n"+
- "“那你慢慢想，我去拿水。”\n\n"+
- "“你等等。”\n\n"+
- b.name+"停下来。“又怎么了？”\n\n"+
- a.name+"看着他，最后还是把刚才准备好的那套说辞咽了回去。“算了，先说别的。你今天为什么没回我消息？”\n\n"+
- "“忙。”\n\n"+
- "“忙到晚上十一点？”\n\n"+
- "“你是在查岗？”\n\n"+
- "“我是在问。”\n\n"+
- b.name+"拉开椅子坐回去。“那你问清楚一点。你到底想知道我今天在做什么，还是想知道我为什么没告诉你？”\n\n"+
- a.name+"沉默了两秒。“后一个。”\n\n"+
- "“这不就说清楚了。”\n\n"+
- "后面的话终于有了入口。谁也没急着结束这场谈话。";
+ "“那你慢慢想。我明早还有工作，最多给你二十分钟。”\n\n"+
+ a.name+"笑了下。“你现在跟我说话都开始计时了？”\n\n"+
+ "“对你比较有效。”\n\n"+
+ "他们后来真的聊了二十多分钟。话题从眼前的事绕到前几天没回的一条消息，又绕到一次谁都没提过的旧争执。每句话都落在具体的事情上，没有谁用“你什么意思”“没什么意思”把谈话糊弄过去。"
 }
-
-function renderTimeline(){
- const tl=current&&current.timeline||[];
- $("timeline").innerHTML=tl.length?tl.map((x,i)=>'<div class="timelineItem"><b>'+(i+1)+'. '+escapeHtml(x.title)+'</b><div class="muted" style="margin-top:4px">'+new Date(x.time).toLocaleDateString()+'</div><div class="prose" style="margin-top:6px">'+escapeHtml(x.text.slice(0,180))+(x.text.length>180?"…":"")+'</div></div>').join(""):'<div class="muted">喜欢的名场面可以钉在这里。中间没写的剧情完全可以留白。</div>';
-}
-function renderSceneChips(){$("sceneChips").innerHTML=SCENES.map(x=>'<button class="chip" data-scene="'+escapeHtml(x)+'">'+x+'</button>').join("");document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>showScene(b.dataset.scene))}
 function showScene(type){currentScene={title:type,text:makeScene(type)};$("sceneText").textContent=currentScene.text;$("sceneOutput").classList.remove("hidden")}
-function renderLibrary(favsOnly){
- const arr=load("storyloomStories",[]).filter(s=>!favsOnly||s.favorite);
- $("libraryList").innerHTML=arr.length?arr.map(s=>'<div class="libItem"><div class="libTop"><div><div class="libName">'+s.people.map(p=>p.name).join(" × ")+'</div><div class="libMeta">'+escapeHtml(s.genre)+' · '+(s.rating||"未评价")+(s.favorite?" · ♥ 收藏":"")+'</div></div><button class="secondary reopen" data-id="'+s.id+'">重温</button></div><div class="prose" style="margin-top:7px">'+escapeHtml((s.event||"").slice(0,140))+'…</div></div>').join(""):'<div class="empty">这里还空着。生成过的故事会自动保留最近 40 组。</div>';
- document.querySelectorAll(".reopen").forEach(b=>b.onclick=()=>{const s=load("storyloomStories",[]).find(x=>x.id===b.dataset.id);if(s){current=s;locked=new Set();switchTab("create");renderStory();$("result").scrollIntoView({behavior:"smooth"})}});
+function renderTimeline(){
+ const tl=current?.timeline||[];$("timeline").innerHTML=tl.length?tl.map((x,i)=>'<div class="timelineItem"><b>'+(i+1)+'. '+esc(x.title)+'</b><div class="muted" style="margin-top:4px">'+new Date(x.time).toLocaleDateString()+'</div><div class="prose" style="margin-top:6px">'+esc(x.text.slice(0,200))+(x.text.length>200?"…":"")+'</div></div>').join(""):'<div class="muted">喜欢的名场面可以钉在这里。中间没写的剧情完全可以留白。</div>'
 }
-function switchTab(which){
- const create=which==="create";$("createView").classList.toggle("hidden",!create);$("libraryView").classList.toggle("hidden",create);$("tabCreate").classList.toggle("active",create);$("tabLibrary").classList.toggle("active",!create);if(!create)renderLibrary();
+function renderLibrary(fav){
+ const arr=load("storyloomStories",[]).filter(s=>!fav||s.favorite);
+ $("libraryList").innerHTML=arr.length?arr.map(s=>'<div class="libItem"><div class="libTop"><div><div class="libName">'+s.people.map(p=>p.name).join(" × ")+'</div><div class="libMeta">'+esc(s.genre)+' · '+(s.rating||"未评价")+(s.favorite?" · ♥ 收藏":"")+'</div></div><button class="secondary reopen" data-id="'+s.id+'">重温</button></div><div class="prose" style="margin-top:7px">'+esc((s.outline?.[0]?.[1]||"").slice(0,150))+'…</div></div>').join(""):'<div class="empty">这里还空着。生成过的故事会自动保留最近 50 组。</div>';
+ document.querySelectorAll(".reopen").forEach(b=>b.onclick=()=>{const s=load("storyloomStories",[]).find(x=>x.id===b.dataset.id);if(s){current=s;locked=new Set();switchTab("create");renderStory();$("result").scrollIntoView({behavior:"smooth"})}})
+}
+function switchTab(w){
+ const c=w==="create";$("createView").classList.toggle("hidden",!c);$("libraryView").classList.toggle("hidden",c);$("tabCreate").classList.toggle("active",c);$("tabLibrary").classList.toggle("active",!c);if(!c)renderLibrary()
+}
+function writingRules(){
+ return "正文写作规则：固定人物视角；少写站在故事外面的关系点评，避免“他们都知道”“气氛微妙”“他其实已经动心”等替读者下结论的句子。情绪要落在具体事件、物件、动作和前后呼应的细节上。对话要真正展开，允许十几轮以上的来回、岔题、打断、旧事和答非所问，但每轮都要推动信息或关系。禁止用“你什么意思？—没什么意思。—确定？”“所以？—没什么。”这种空转短句假装有张力。冷淡不等于话少，强势不等于句句命令。少用挑眉、勾唇、眸色一沉、指尖收紧、沉默片刻等库存动作。人物背景要影响选择和说话方式。允许人物嘴硬、误会、迁怒和不体面。"
 }
 
-$("saveGenre").onclick=()=>{const v=$("customGenre").value.trim();if(!v)return;let a=load("storyloomCustomGenres",[]);if(!a.includes(v)){a.push(v);save("storyloomCustomGenres",a)}renderGenreOptions();$("genre").value=v;$("customGenre").value="";toast("题材已保存")};
-$("mode").onchange=updateModeUI;$("surprise").oninput=()=>$("surpriseText").textContent=$("surprise").value;
-$("generate").onclick=()=>{rememberPersona();locked=new Set();current=buildStory(false);persistCurrent();renderStory();setTimeout(()=>$("result").scrollIntoView({behavior:"smooth"}),80)};
-$("rerollUnlocked").onclick=()=>{if(!current)return;current=buildStory(true);persistCurrent();renderStory()};
-$("rerollRelation").onclick=()=>{if(!current)return;current.meeting=pick(dataForGenre(current.genre).events);current.event=buildEvent(current);current.special=specialLine(current);current.chapter=buildChapter(current);persistCurrent();renderStory()};
-$("rewriteChapter").onclick=()=>{if(!current)return;current.chapter=buildChapter(current,rand(0,FIRST_LINES.length-1));persistCurrent();renderStory();toast("第一章换了一种写法")};
-document.querySelectorAll(".rate").forEach(b=>b.onclick=()=>{selectedRating=b.dataset.rating;current.rating=selectedRating;renderRating();persistCurrent()});
-$("saveFeedback").onclick=()=>{if(!current)return;current.rating=selectedRating;current.feedback=$("feedback").value.trim();persistCurrent();toast("评价已经记住了")};
-$("favorite").onclick=()=>{if(!current)return;current.favorite=!current.favorite;persistCurrent();renderStory();toast(current.favorite?"已收藏":"已取消收藏")};
+$("saveGenre").onclick=()=>{
+ const name=$("customGenre").value.trim();if(!name)return;
+ let arr=customRecords(),i=arr.findIndex(x=>x.name===name),world=$("worldNote").value.trim();
+ if(i>=0)arr[i].world=world;else arr.push({name,world});
+ save("storyloomCustomGenreRecords",arr);renderGenres();$("genre").value=name;$("customGenre").value="";syncWorld();toast("题材已保存")
+};
+$("genre").onchange=syncWorld;$("mode").onchange=updateModeUI;$("surprise").oninput=()=>$("surpriseText").textContent=$("surprise").value;
+$("generate").onclick=()=>{locked=new Set();current=buildStory(false);persist();renderStory();setTimeout(()=>$("result").scrollIntoView({behavior:"smooth"}),80)};
+$("rerollUnlocked").onclick=()=>{if(!current)return;current=buildStory(true);persist();renderStory()};
+$("rerollOutline").onclick=()=>{if(!current)return;current.outline=buildOutline(current);current.chapter=buildChapter(current,rand(0,9));persist();renderStory()};
+$("rewriteChapter").onclick=()=>{if(!current)return;current.chapter=buildChapter(current,rand(0,9));persist();renderStory();toast("第一章已换一种写法")};
+document.querySelectorAll(".rate").forEach(b=>b.onclick=()=>{selectedRating=b.dataset.rating;current.rating=selectedRating;renderRating();persist()});
+$("saveFeedback").onclick=()=>{if(!current)return;current.rating=selectedRating;current.feedback=$("feedback").value.trim();persist();toast("评价已经记住了")};
+$("favorite").onclick=()=>{if(!current)return;current.favorite=!current.favorite;persist();renderStory();toast(current.favorite?"已收藏":"已取消收藏")};
 $("makeCustomScene").onclick=()=>{const v=$("customScene").value.trim();if(v)showScene(v)};
-$("addTimeline").onclick=()=>{if(!current||!currentScene)return;current.timeline=current.timeline||[];current.timeline.push({title:currentScene.title,text:currentScene.text,time:Date.now()});persistCurrent();renderTimeline();toast("已经钉进时间线")};
+$("addTimeline").onclick=()=>{if(!current||!currentScene)return;current.timeline=current.timeline||[];current.timeline.push({title:currentScene.title,text:currentScene.text,time:Date.now()});persist();renderTimeline();toast("已经钉进时间线")};
 $("copyScene").onclick=async()=>{if(!currentScene)return;try{await navigator.clipboard.writeText(currentScene.text);toast("这一幕已复制")}catch{}};
-$("copyStory").onclick=async()=>{if(!current)return;const t="Storyloom 故事设定\n题材："+current.genre+"\n人物：\n"+current.people.map(p=>p.role+"｜"+profileText(p)).join("\n")+"\n\n相识："+current.event+"\n特殊性："+current.special+"\n\n第一章：\n"+current.chapter+"\n\n正文规则：固定单一人物视角，不写站在故事外面的关系点评；能让读者从动作、物件、对话看出来的内容，不再替读者总结。情绪必须落在具体事件和细节上。对话要真正展开，允许十几轮甚至更多来回、岔题、打断、旧事和答非所问；冷淡不等于只说两三个字，强势也不等于句句命令。少用挑眉、勾唇、眸色一沉、指尖收紧、沉默片刻等库存动作。人物背景要影响他的选择和说话方式。每一章至少发生一件具体的事，并让关系在一个可见的小地方发生变化。允许人物嘴硬、误会、迁怒和不体面，不要把所有人写得过分会沟通。";try{await navigator.clipboard.writeText(t);toast("整组设定已复制")}catch{}};
-$("tabCreate").onclick=()=>switchTab("create");$("tabLibrary").onclick=()=>switchTab("library");
-$("showFav").onclick=()=>renderLibrary(true);
-$("exportFeedback").onclick=async()=>{const arr=load("storyloomStories",[]).filter(s=>s.rating||s.feedback).slice(0,20);const t="这是我最近在 Storyloom 里对故事的反馈，请帮我分析我的小说审美，并用于以后创作：\n\n"+arr.map((s,i)=>(i+1)+". "+s.genre+"｜"+s.people.map(p=>p.role+p.name+"("+p.trait+")").join("；")+"｜评分："+(s.rating||"未评分")+"｜意见："+(s.feedback||"无")).join("\n");try{await navigator.clipboard.writeText(t);toast("近期反馈已复制")}catch{}};
+$("copyStory").onclick=async()=>{
+ if(!current)return;
+ const t="Storyloom 故事设定\n题材："+current.genre+"\n世界观："+(current.world||"无额外设定")+"\n定制情节："+(current.customPlot||"无")+"\n\n人物：\n"+current.people.map(p=>p.role+"｜"+p.name+"｜"+p.identity+"｜"+p.age+"岁｜"+p.trait+"｜"+profileText(p,current.genre)).join("\n")+"\n\n故事大纲：\n"+current.outline.map((x,i)=>(i+1)+". "+x[0]+"："+x[1]).join("\n")+"\n\n第一章：\n"+current.chapter+"\n\n"+writingRules();
+ try{await navigator.clipboard.writeText(t);toast("整组设定已复制")}catch{}
+};
+$("tabCreate").onclick=()=>switchTab("create");$("tabLibrary").onclick=()=>switchTab("library");$("showFav").onclick=()=>renderLibrary(true);
+$("exportFeedback").onclick=async()=>{
+ const arr=load("storyloomStories",[]).filter(s=>s.rating||s.feedback).slice(0,20);
+ const t="这是我最近在 Storyloom 的反馈，请据此分析我的小说审美：\n\n"+arr.map((s,i)=>(i+1)+". "+s.genre+"｜"+s.people.map(p=>p.role+p.name+"("+p.identity+" / "+p.trait+")").join("；")+"｜评分："+(s.rating||"未评分")+"｜意见："+(s.feedback||"无")).join("\n");
+ try{await navigator.clipboard.writeText(t);toast("近期反馈已复制")}catch{}
+};
 
-renderGenreOptions();renderDatalists();renderSceneChips();updateModeUI();renderLibrary();
+renderGenres();updateModeUI();renderLibrary();renderSceneChips();
 </script>
 </body>
 </html>
